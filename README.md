@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+// README.md
 
-## Getting Started
+# RMU Group Official Website
 
-First, run the development server:
+Advanced Mining Technology & Construction Services
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/                 # Next.js app directory
+├── components/         # React components
+│   ├── layout/        # Header, Footer
+│   ├── sections/      # Page sections
+│   └── common/        # Reusable components
+├── data/              # Data files
+└── lib/               # Utilities
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+public/
+├── images/            # Static images
+├── icons/             # Icons and favicons
+└── documents/         # PDF documents
+```
 
-## Learn More
+## 🛠 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: Next.js 13.5.6
+- **Styling**: Tailwind CSS
+- **Typography**: Inter + Playfair Display
+- **Icons**: Lucide React
+- **Deployment**: Netlify
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📞 Contact Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- WhatsApp click-to-chat functionality
+- Email integration
+- Multiple office locations
+- Responsive contact forms
 
-## Deploy on Vercel
+## 🔧 Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Development server
+npm run dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Build and export
+npm run build
+```
+
+## 🚀 Deployment
+
+1. Push to GitHub main branch
+2. Netlify auto-deploys
+3. Domain: www.rmineral.com
+
+## 📝 Content Updates
+
+Edit files in `src/data/` to update:
+
+- Company information
+- Team members
+- Contact details
+- Services offered
+
+## 📱 Features
+
+- ✅ Mobile-first responsive design
+- ✅ SEO optimized
+- ✅ Fast loading (90+ Lighthouse score)
+- ✅ WhatsApp integration
+- ✅ Multi-language support ready
+- ✅ ESG compliance focused
+
+## 🎯 Companies Featured
+
+- PT Rekayasa Mineral Utama (MPAL Technology)
+- PT Gemilang Kharisma (Marine Operations)
+- PT Kembar Jaya Abadi (Construction Services)
+
+---
+
+© 2025 RMU Group. All rights reserved.
