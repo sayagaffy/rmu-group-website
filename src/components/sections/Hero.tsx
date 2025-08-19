@@ -17,7 +17,7 @@ const Hero = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // YouTube video ID - ganti dengan video ID yang sesuai
-  const youtubeVideoId = "dQw4w9WgXcQ"; // Contoh ID - ganti dengan video RMU Group
+  const youtubeVideoId = "Rs_jw9cntjY"; // Contoh ID - ganti dengan video RMU Group
 
   const openVideo = () => {
     setIsVideoOpen(true);
