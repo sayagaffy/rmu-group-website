@@ -17,7 +17,7 @@ const Hero = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // YouTube video ID - ganti dengan video ID yang sesuai
-  const youtubeVideoId = "Rs_jw9cntjY"; // Contoh ID - ganti dengan video RMU Group
+  const youtubeVideoId = "dQw4w9WgXcQ"; // Contoh ID - ganti dengan video RMU Group
 
   const openVideo = () => {
     setIsVideoOpen(true);
@@ -49,7 +49,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 min-h-screen overflow-hidden"
+        className="relative flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 pt-20 md:pt-0 min-h-screen overflow-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0">
@@ -69,14 +69,14 @@ const Hero = () => {
                   <span>Leading Indonesian Industrial Group</span>
                 </div>
 
-                <h1 className="font-heading font-bold text-5xl lg:text-7xl leading-tight">
+                <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-7xl leading-tight">
                   RMU Group
                   <span className="block bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300 text-transparent">
                     Excellence
                   </span>
                 </h1>
 
-                <p className="max-w-2xl text-blue-100 text-xl lg:text-2xl leading-relaxed">
+                <p className="max-w-2xl text-blue-100 text-lg sm:text-xl lg:text-2xl leading-relaxed">
                   Advanced Mining Technology, Maritime Transportation,
                   Manufacturing Excellence, Marine Operations & Construction
                   Services
@@ -104,7 +104,8 @@ const Hero = () => {
               <div className="flex sm:flex-row flex-col gap-4">
                 <button
                   onClick={() => scrollToSection("companies")}
-                  className="group flex justify-center items-center gap-3 bg-gradient-to-r from-cyan-500 hover:from-cyan-600 to-blue-600 hover:to-blue-700 shadow-xl hover:shadow-2xl px-8 py-4 rounded-lg font-semibold text-white text-lg transition-all duration-300"
+                  className="group flex justify-center items-center gap-3 bg-gradient-to-r from-cyan-500 hover:from-cyan-600 to-blue-600 hover:to-blue-700 shadow-xl hover:shadow-2xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-white text-base sm:text-lg transition-all duration-300"
+                  style={{ touchAction: "manipulation" }}
                 >
                   <span>Explore Our Companies</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -112,7 +113,8 @@ const Hero = () => {
 
                 <button
                   onClick={openVideo}
-                  className="group flex justify-center items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 border border-white/20 hover:border-white/30 rounded-lg font-semibold text-white text-lg transition-all duration-300"
+                  className="group flex justify-center items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 border border-white/20 hover:border-white/30 rounded-lg font-semibold text-white text-base sm:text-lg transition-all duration-300"
+                  style={{ touchAction: "manipulation" }}
                 >
                   <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span>Watch Our Story</span>
@@ -155,17 +157,30 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
                   {/* Play Button */}
-                  <button
-                    onClick={openVideo}
-                    className="absolute inset-0 flex justify-center items-center group-hover:scale-110 transition-transform duration-300"
+                  <div
+                    className="z-10 absolute inset-0 flex justify-center items-center"
+                    style={{ pointerEvents: "auto" }}
                   >
-                    <div className="bg-white/20 hover:bg-white/30 backdrop-blur-sm p-6 border border-white/30 rounded-full transition-all duration-300">
-                      <Play className="fill-current w-12 h-12 text-white" />
-                    </div>
-                  </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openVideo();
+                      }}
+                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm p-6 border border-white/30 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 group-hover:scale-110 transition-all duration-300"
+                      style={{
+                        pointerEvents: "auto",
+                        touchAction: "manipulation",
+                        userSelect: "none",
+                      }}
+                      aria-label="Play video"
+                    >
+                      <Play className="fill-current ml-1 w-12 h-12 text-white" />
+                    </button>
+                  </div>
 
                   {/* Video Info */}
-                  <div className="right-4 bottom-4 left-4 absolute">
+                  <div className="right-4 bottom-4 left-4 absolute pointer-events-none">
                     <h3 className="mb-1 font-semibold text-white text-lg">
                       RMU Group Company Overview
                     </h3>
@@ -227,29 +242,46 @@ const Hero = () => {
 
       {/* Video Modal */}
       {isVideoOpen && (
-        <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/90 p-4">
+        <div
+          className="z-50 fixed inset-0 flex justify-center items-center bg-black/90 p-4"
+          style={{ touchAction: "manipulation" }}
+        >
           <div className="relative w-full max-w-6xl aspect-video">
             {/* Close Button */}
             <button
-              onClick={closeVideo}
-              className="-top-12 right-0 z-10 absolute text-white hover:text-gray-300 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                closeVideo();
+              }}
+              className="-top-12 right-0 z-10 absolute p-2 text-white hover:text-gray-300 transition-colors"
+              style={{ touchAction: "manipulation" }}
+              aria-label="Close video"
             >
               <X className="w-8 h-8" />
             </button>
 
             {/* YouTube Iframe */}
             <iframe
-              src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1`}
+              src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
               title="RMU Group Company Overview"
               className="rounded-lg w-full h-full"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              style={{ pointerEvents: "auto" }}
             ></iframe>
           </div>
 
           {/* Click outside to close */}
-          <div className="-z-10 absolute inset-0" onClick={closeVideo}></div>
+          <div
+            className="-z-10 absolute inset-0"
+            onClick={(e) => {
+              e.preventDefault();
+              closeVideo();
+            }}
+            style={{ touchAction: "manipulation" }}
+          ></div>
         </div>
       )}
 
