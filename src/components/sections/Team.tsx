@@ -1,365 +1,687 @@
 "use client";
 
-import React from "react";
-import { Users, Crown, User, Mail, Phone } from "lucide-react";
+import React, { useState } from "react";
+import {
+  Users,
+  Star,
+  Award,
+  Building,
+  GraduationCap,
+  Clock,
+  ChevronDown,
+  ChevronUp,
+  Mail,
+  Linkedin,
+  Factory,
+  Ship,
+  Cog,
+  Waves,
+  Construction,
+  Crown,
+  Shield,
+  Target,
+  Globe,
+} from "lucide-react";
+
+// Team Data
+interface TeamMember {
+  id: string;
+  name: string;
+  position: string;
+  company: string;
+  description: string;
+  expertise?: string[];
+  education?: string;
+  experience?: string;
+  image?: string;
+}
+
+interface CompanyTeam {
+  companyId: string;
+  companyName: string;
+  companyType: string;
+  icon: JSX.Element;
+  gradient: string;
+  leadership: TeamMember[];
+  keyStats?: {
+    label: string;
+    value: string;
+    icon: JSX.Element;
+  }[];
+}
+
+// Group Leadership
+const groupLeadership: TeamMember[] = [
+  {
+    id: "ibih-tg-hassan",
+    name: "IBIH TG HASSAN",
+    position: "President Commissioner",
+    company: "RMU Group",
+    description:
+      "Strategic leadership and corporate governance oversight for RMU Group's diversified portfolio. Provides strategic direction and ensures alignment across all business units including mining technology, maritime services, manufacturing, marine operations, and construction.",
+    expertise: [
+      "Corporate Governance",
+      "Strategic Planning",
+      "Business Development",
+      "Risk Management",
+    ],
+    experience: "25+ Years",
+  },
+  {
+    id: "djoni-rosadi",
+    name: "H. IR. DJONI ROSADI",
+    position: "President Director",
+    company: "RMU Group",
+    description:
+      "Operational leadership and strategic direction for RMU Group's integrated business portfolio. Oversees day-to-day operations and ensures synergy between all business divisions.",
+    expertise: [
+      "Operations Management",
+      "Engineering",
+      "Business Strategy",
+      "Technology Integration",
+    ],
+    education: "Ir. (Engineering)",
+    experience: "20+ Years",
+  },
+  {
+    id: "iwan-abdurrachman",
+    name: "IWAN ABDURRACHMAN, IR.",
+    position: "Commissioner",
+    company: "RMU Group",
+    description:
+      "Provides strategic oversight and governance guidance for RMU Group's business operations and development initiatives.",
+    education: "Ir. (Engineering)",
+    expertise: [
+      "Engineering Management",
+      "Strategic Oversight",
+      "Corporate Governance",
+    ],
+    experience: "18+ Years",
+  },
+  {
+    id: "mulyo-widodo",
+    name: "MULYO WIDODO, PROF. DR. IR.",
+    position: "Commissioner & Founder",
+    company: "RMU Group",
+    description:
+      "Founding member and strategic advisor, providing academic and technical expertise to guide RMU Group's technology development and innovation strategy.",
+    education: "Prof. Dr. Ir. (Professor, Doctorate in Engineering)",
+    expertise: [
+      "Academic Leadership",
+      "Technology Innovation",
+      "Research & Development",
+      "Strategic Advisory",
+    ],
+    experience: "30+ Years",
+  },
+  {
+    id: "zaki-mubarok",
+    name: "MUHAMMAD ZAKI MUBAROK, PROF. DR. IR.",
+    position: "Commissioner",
+    company: "RMU Group",
+    description:
+      "Lead researcher and founder of MPAL technology. Professor and expert in hydrometallurgical processes with decades of experience in mineral processing innovation.",
+    education: "Prof. Dr. Ir. (Professor, Doctorate in Engineering)",
+    expertise: [
+      "Hydrometallurgy",
+      "MPAL Technology",
+      "Mineral Processing",
+      "Research & Development",
+    ],
+    experience: "35+ Years",
+  },
+];
+
+// Company Teams
+const companyTeams: CompanyTeam[] = [
+  {
+    companyId: "rmu",
+    companyName: "PT Rekayasa Mineral Utama",
+    companyType: "Mining Technology",
+    icon: <Cog className="w-8 h-8" />,
+    gradient: "from-blue-600 to-blue-800",
+    leadership: [
+      {
+        id: "zaki-mubarok-rmu",
+        name: "MUHAMMAD ZAKI MUBAROK, PROF. DR. IR.",
+        position: "Expert Staff & Founder",
+        company: "PT Rekayasa Mineral Utama",
+        description:
+          "Chief Technology Officer and founder, leading MPAL technology development and research initiatives. Drives innovation in sustainable mineral processing technology.",
+        education: "Prof. Dr. Ir.",
+        expertise: [
+          "MPAL Technology",
+          "Hydrometallurgy",
+          "Process Engineering",
+          "Innovation Management",
+        ],
+        experience: "35+ Years",
+      },
+    ],
+    keyStats: [
+      {
+        label: "Years Innovation",
+        value: "19+",
+        icon: <Award className="w-5 h-5" />,
+      },
+      {
+        label: "MPAL Technology",
+        value: "Patented",
+        icon: <Star className="w-5 h-5" />,
+      },
+      {
+        label: "ESG Compliance",
+        value: "100%",
+        icon: <Shield className="w-5 h-5" />,
+      },
+    ],
+  },
+  {
+    companyId: "pt-bnp",
+    companyName: "PT Bahana Nusa Pasifik",
+    companyType: "Maritime Services",
+    icon: <Ship className="w-8 h-8" />,
+    gradient: "from-blue-600 to-cyan-700",
+    leadership: [
+      {
+        id: "tino-rilantino",
+        name: "R. TINO RILANTINO PRAWIRAKUSUMAH",
+        position: "Managing Director",
+        company: "PT Bahana Nusa Pasifik",
+        description:
+          "Overall leadership and strategic direction for maritime transportation operations, fleet management and business development. Ensures operational excellence in specialized cargo transportation.",
+        expertise: [
+          "Maritime Operations",
+          "Strategic Management",
+          "Business Development",
+          "Fleet Operations",
+        ],
+        experience: "15+ Years",
+      },
+      {
+        id: "achmad-hilmy",
+        name: "R. ACHMAD HILMY AL RASYID",
+        position: "Operations Director",
+        company: "PT Bahana Nusa Pasifik",
+        description:
+          "Operational excellence and safety compliance for maritime transportation services, ensuring efficient and secure cargo operations across Indonesian waters.",
+        expertise: [
+          "Operations Management",
+          "Maritime Safety",
+          "Logistics",
+          "Process Optimization",
+        ],
+        experience: "12+ Years",
+      },
+      {
+        id: "fahmi-rachmat",
+        name: "M. FAHMI RACHMAT",
+        position: "General Manager",
+        company: "PT Bahana Nusa Pasifik",
+        description:
+          "Day-to-day operations management and coordination between departments for seamless service delivery and customer satisfaction.",
+        expertise: [
+          "General Management",
+          "Operations Coordination",
+          "Team Leadership",
+        ],
+        experience: "10+ Years",
+      },
+    ],
+    keyStats: [
+      {
+        label: "Fleet Capacity",
+        value: "230-300ft",
+        icon: <Ship className="w-5 h-5" />,
+      },
+      {
+        label: "Safety Record",
+        value: "100%",
+        icon: <Shield className="w-5 h-5" />,
+      },
+      {
+        label: "Experience",
+        value: "5+ Years",
+        icon: <Clock className="w-5 h-5" />,
+      },
+    ],
+  },
+  {
+    companyId: "pt-prn",
+    companyName: "PT Perkakas Rekadaya Nusantara",
+    companyType: "Manufacturing",
+    icon: <Factory className="w-8 h-8" />,
+    gradient: "from-gray-600 to-gray-800",
+    leadership: [
+      {
+        id: "prn-managing-director",
+        name: "Managing Director",
+        position: "Managing Director",
+        company: "PT Perkakas Rekadaya Nusantara",
+        description:
+          "Strategic leadership for manufacturing operations across 6 production plants with 419+ workforce. Oversees automotive components production and special purpose machines manufacturing.",
+        expertise: [
+          "Manufacturing Strategy",
+          "Operations Management",
+          "Automotive Industry",
+          "Quality Management",
+        ],
+        experience: "20+ Years",
+      },
+      {
+        id: "prn-technical-director",
+        name: "Technical Director",
+        position: "Technical Director",
+        company: "PT Perkakas Rekadaya Nusantara",
+        description:
+          "Technical leadership for advanced manufacturing processes, quality control, and engineering excellence. Ensures ISO compliance and continuous improvement.",
+        expertise: [
+          "Manufacturing Engineering",
+          "Quality Management",
+          "Technical Leadership",
+          "Process Innovation",
+        ],
+        experience: "18+ Years",
+      },
+    ],
+    keyStats: [
+      {
+        label: "Workforce",
+        value: "419+",
+        icon: <Users className="w-5 h-5" />,
+      },
+      {
+        label: "Machining Units",
+        value: "103",
+        icon: <Factory className="w-5 h-5" />,
+      },
+      {
+        label: "Land Area",
+        value: "50 Hectares",
+        icon: <Globe className="w-5 h-5" />,
+      },
+      {
+        label: "ISO Certified",
+        value: "2008",
+        icon: <Award className="w-5 h-5" />,
+      },
+    ],
+  },
+  {
+    companyId: "gemilang",
+    companyName: "PT Gemilang Kharisma",
+    companyType: "Marine Operations",
+    icon: <Waves className="w-8 h-8" />,
+    gradient: "from-cyan-600 to-blue-700",
+    leadership: [
+      {
+        id: "gemilang-managing-director",
+        name: "Managing Director",
+        position: "Managing Director",
+        company: "PT Gemilang Kharisma",
+        description:
+          "Strategic leadership for marine sand mining operations in Batam waters with focus on sustainable practices and environmental compliance.",
+        expertise: [
+          "Marine Operations",
+          "Environmental Compliance",
+          "Strategic Management",
+          "Sustainable Mining",
+        ],
+        experience: "15+ Years",
+      },
+      {
+        id: "gemilang-operations-manager",
+        name: "Operations Manager",
+        position: "Operations Manager",
+        company: "PT Gemilang Kharisma",
+        description:
+          "Daily operations management for marine mining activities, equipment coordination, and environmental monitoring to ensure sustainable extraction practices.",
+        expertise: [
+          "Marine Mining",
+          "Equipment Management",
+          "Operations Coordination",
+          "Safety Management",
+        ],
+        experience: "12+ Years",
+      },
+    ],
+    keyStats: [
+      {
+        label: "Land Assets",
+        value: "33,200 m²",
+        icon: <Globe className="w-5 h-5" />,
+      },
+      {
+        label: "Asset Value",
+        value: "400B IDR",
+        icon: <Star className="w-5 h-5" />,
+      },
+      {
+        label: "Location",
+        value: "Batam Waters",
+        icon: <Waves className="w-5 h-5" />,
+      },
+    ],
+  },
+  {
+    companyId: "kembar",
+    companyName: "PT Kembar Jaya Abadi",
+    companyType: "Construction",
+    icon: <Construction className="w-8 h-8" />,
+    gradient: "from-orange-600 to-red-700",
+    leadership: [
+      {
+        id: "syarifudin-nurdiansyah",
+        name: "SYARIFUDIN NURDIANSYAH",
+        position: "PJBU (Penanggung Jawab Badan Usaha)",
+        company: "PT Kembar Jaya Abadi",
+        description:
+          "Legal representative and business operations oversight for construction projects and corporate compliance. Ensures regulatory compliance and business excellence.",
+        expertise: [
+          "Business Operations",
+          "Legal Compliance",
+          "Project Management",
+          "Corporate Affairs",
+        ],
+        experience: "15+ Years",
+      },
+      {
+        id: "oliansyah-oesnawi",
+        name: "IR. OLIANSYAH OESNAWI",
+        position: "PJTBU (Penanggung Jawab Teknik Badan Usaha)",
+        company: "PT Kembar Jaya Abadi",
+        description:
+          "Technical leadership for construction projects, engineering solutions, and quality assurance. Oversees technical aspects of building and infrastructure development.",
+        education: "Ir. (Engineering)",
+        expertise: [
+          "Construction Engineering",
+          "Technical Management",
+          "Project Design",
+          "Quality Control",
+        ],
+        experience: "20+ Years",
+      },
+    ],
+    keyStats: [
+      {
+        label: "Experience",
+        value: "31 Years",
+        icon: <Clock className="w-5 h-5" />,
+      },
+      {
+        label: "ISO Certified",
+        value: "2015",
+        icon: <Award className="w-5 h-5" />,
+      },
+      {
+        label: "Location",
+        value: "East Kalimantan",
+        icon: <Globe className="w-5 h-5" />,
+      },
+    ],
+  },
+];
 
 const Team = () => {
-  const managementTeam = [
-    {
-      id: "djoni-rosadi",
-      name: "H. IR. DJONI ROSADI",
-      position: "President Director",
-      company: "PT Rekayasa Mineral Utama",
-      department: "Executive Management",
-      type: "executive",
-      description:
-        "Leading RMU Group with extensive experience in mining technology and business development",
-    },
-    {
-      id: "zaki-mubarok",
-      name: "Prof. DR. IR. MUHAMMAD ZAKI MUBAROK",
-      position: "Commissioner & Expert Staff",
-      company: "PT Rekayasa Mineral Utama",
-      department: "Technical Advisory",
-      type: "expert",
-      description:
-        "Chief technology advisor and co-founder, leading MPAL technology development and research initiatives",
-    },
-    {
-      id: "mulyo-widodo",
-      name: "Prof. DR. IR. MULYO WIDODO",
-      position: "Commissioner & Founder",
-      company: "PT Rekayasa Mineral Utama",
-      department: "Board of Commissioners",
-      type: "founder",
-      description:
-        "Co-founder and strategic advisor with expertise in mineral processing and technology innovation",
-    },
-  ];
+  const [expandedMember, setExpandedMember] = useState<string | null>(null);
 
-  const boardMembers = [
-    {
-      id: "ibih-hassan",
-      name: "IBIH TG HASSAN",
-      position: "President Commissioner",
-      company: "PT Rekayasa Mineral Utama",
-      department: "Board of Commissioners",
-    },
-    {
-      id: "abdurrachman",
-      name: "IR. ABDURRACHMAN",
-      position: "Commissioner",
-      company: "PT Rekayasa Mineral Utama",
-      department: "Board of Commissioners",
-    },
-  ];
-
-  const kjaManagement = [
-    {
-      id: "syarifudin-nurdiansyah",
-      name: "Syarifudin Nurdiansyah",
-      position: "Direktur Utama",
-      company: "PT Kembar Jaya Abadi",
-      department: "Executive Management",
-      type: "executive",
-    },
-    {
-      id: "siti-aisyah",
-      name: "Hj. Siti Aisyah",
-      position: "Wakil Direktur Utama",
-      company: "PT Kembar Jaya Abadi",
-      department: "Executive Management",
-      type: "executive",
-    },
-    {
-      id: "siska-sari-dewi",
-      name: "Siska Sari Dewi",
-      position: "Komisaris Utama",
-      company: "PT Kembar Jaya Abadi",
-      department: "Board of Commissioners",
-      type: "commissioner",
-    },
-    {
-      id: "eka-hillyian",
-      name: "Eka Hillyian Fazzih",
-      position: "Direktur",
-      company: "PT Kembar Jaya Abadi",
-      department: "Operations",
-    },
-    {
-      id: "lukman-hakim",
-      name: "Lukman Hakim",
-      position: "Direktur",
-      company: "PT Kembar Jaya Abadi",
-      department: "Operations",
-    },
-  ];
-
-  const getIconForType = (type?: string) => {
-    switch (type) {
-      case "executive":
-        return <Crown className="w-6 h-6" />;
-      case "expert":
-        return <Users className="w-6 h-6" />;
-      case "founder":
-        return <Crown className="w-6 h-6" />;
-      case "commissioner":
-        return <User className="w-6 h-6" />;
-      default:
-        return <User className="w-6 h-6" />;
-    }
+  const toggleMemberExpansion = (memberId: string) => {
+    setExpandedMember(expandedMember === memberId ? null : memberId);
   };
 
-  const getColorForCompany = (company: string) => {
-    if (company.includes("Rekayasa Mineral"))
-      return "from-blue-600 to-blue-800";
-    if (company.includes("Kembar Jaya")) return "from-orange-600 to-red-700";
-    return "from-gray-600 to-gray-800";
-  };
+  const renderTeamMember = (member: TeamMember) => (
+    <div
+      key={member.id}
+      className="bg-white hover:shadow-xl p-6 border border-gray-100 rounded-2xl transition-all duration-300"
+    >
+      <div className="flex items-start gap-4">
+        {/* Avatar */}
+        <div className="flex-shrink-0">
+          <div className="flex justify-center items-center bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full w-16 h-16">
+            <span className="font-bold text-white text-lg">
+              {member.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2)}
+            </span>
+          </div>
+        </div>
+
+        {/* Member Info */}
+        <div className="flex-1 min-w-0">
+          <h3 className="mb-1 font-heading font-bold text-gray-900 text-lg">
+            {member.name}
+          </h3>
+          <p className="mb-1 font-semibold text-blue-600 text-sm">
+            {member.position}
+          </p>
+          <p className="mb-3 text-gray-600 text-xs">{member.company}</p>
+
+          {/* Quick Info */}
+          <div className="flex flex-wrap gap-3 mb-3">
+            {member.education && (
+              <div className="flex items-center gap-1 text-gray-500 text-xs">
+                <GraduationCap className="w-3 h-3" />
+                <span>{member.education}</span>
+              </div>
+            )}
+            {member.experience && (
+              <div className="flex items-center gap-1 text-gray-500 text-xs">
+                <Clock className="w-3 h-3" />
+                <span>{member.experience}</span>
+              </div>
+            )}
+          </div>
+
+          {/* Description */}
+          <p className="mb-3 text-gray-700 text-sm leading-relaxed">
+            {expandedMember === member.id
+              ? member.description
+              : `${member.description.slice(0, 120)}${
+                  member.description.length > 120 ? "..." : ""
+                }`}
+          </p>
+
+          {/* Expertise Tags */}
+          {member.expertise && (
+            <div className="mb-3">
+              <div className="flex flex-wrap gap-1">
+                {member.expertise
+                  .slice(0, expandedMember === member.id ? undefined : 2)
+                  .map((skill, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-100 px-2 py-1 rounded-full font-medium text-blue-700 text-xs"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                {!expandedMember && member.expertise.length > 2 && (
+                  <span className="text-blue-600 text-xs">
+                    +{member.expertise.length - 2} more
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Expand Button */}
+          {member.description.length > 120 && (
+            <button
+              onClick={() => toggleMemberExpansion(member.id)}
+              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 text-xs transition-colors"
+            >
+              <span>
+                {expandedMember === member.id ? "Show Less" : "Learn More"}
+              </span>
+              {expandedMember === member.id ? (
+                <ChevronUp className="w-3 h-3" />
+              ) : (
+                <ChevronDown className="w-3 h-3" />
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
-    <section id="team" className="bg-white section-padding">
+    <section
+      id="team"
+      className="bg-gradient-to-br from-gray-50 to-blue-50 section-padding"
+    >
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
             <Users className="w-4 h-4" />
-            Our Team
+            Our Leadership Structure
           </div>
           <h2 className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl">
-            Leadership <span className="text-gradient">Excellence</span>
+            Expert Leadership for{" "}
+            <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 text-gradient text-transparent">
+              Innovation
+            </span>
           </h2>
           <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
-            Experienced leadership team driving innovation and excellence across
-            mining technology, marine operations, and construction services
+            Our leadership team combines decades of industry expertise across
+            mining technology, maritime operations, manufacturing, and
+            construction to drive sustainable growth and innovation
           </p>
         </div>
 
-        {/* Executive Leadership */}
-        <div className="mb-16">
-          <div className="mb-12 text-center">
-            <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
-              Executive Leadership
-            </h3>
-            <p className="text-gray-600 text-lg">
-              Visionary leaders guiding RMU Group&apos;s strategic direction and
-              innovation
-            </p>
-          </div>
-
-          <div className="gap-8 grid lg:grid-cols-3">
-            {managementTeam.map((member, index) => (
-              <div
-                key={member.id}
-                className="bg-gradient-to-br from-gray-50 to-blue-50 hover:shadow-xl rounded-2xl overflow-hidden transition-all hover:-translate-y-1 duration-300"
-              >
-                <div
-                  className={`bg-gradient-to-br ${getColorForCompany(
-                    member.company
-                  )} p-6 text-white`}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <div className="bg-white/20 p-3 rounded-xl">
-                      {getIconForType(member.type)}
-                    </div>
-                    <div className="text-right">
-                      <div className="bg-white/20 px-2 py-1 rounded-full text-xs">
-                        {member.department}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex justify-center items-center bg-white/20 mx-auto mb-4 rounded-full w-24 h-24">
-                      <User className="w-12 h-12 text-white/80" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="mb-2 font-heading font-bold text-gray-900 text-xl text-center">
-                    {member.name}
-                  </h3>
-                  <p className="mb-2 font-semibold text-blue-600 text-center">
-                    {member.position}
-                  </p>
-                  <p className="mb-4 text-gray-500 text-sm text-center">
-                    {member.company}
-                  </p>
-
-                  {member.description && (
-                    <p className="text-gray-600 text-sm text-center leading-relaxed">
-                      {member.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Board of Commissioners */}
-        <div className="mb-16">
-          <div className="mb-12 text-center">
-            <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
-              Board of Commissioners
-            </h3>
-            <p className="text-gray-600 text-lg">
-              Strategic oversight and governance leadership
-            </p>
-          </div>
-
-          <div className="gap-8 grid md:grid-cols-2 mx-auto max-w-4xl">
-            {boardMembers.map((member, index) => (
-              <div
-                key={member.id}
-                className="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-shadow"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="flex justify-center items-center bg-gradient-to-br from-blue-100 to-blue-200 rounded-full w-16 h-16">
-                    <User className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="mb-1 font-semibold text-gray-900 text-lg">
-                      {member.name}
-                    </h3>
-                    <p className="mb-1 font-medium text-blue-600 text-sm">
-                      {member.position}
-                    </p>
-                    <p className="text-gray-500 text-xs">{member.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* PT Kembar Jaya Abadi Management */}
-        <div className="mb-16">
-          <div className="mb-12 text-center">
-            <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
-              PT Kembar Jaya Abadi Management
-            </h3>
-            <p className="text-gray-600 text-lg">
-              Construction excellence leadership team
-            </p>
-          </div>
-
-          <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
-            {kjaManagement.map((member, index) => (
-              <div
-                key={member.id}
-                className="bg-gradient-to-br from-orange-50 to-red-50 hover:shadow-lg p-6 rounded-xl transition-shadow"
-              >
-                <div className="text-center">
-                  <div className="flex justify-center items-center bg-gradient-to-br from-orange-200 to-red-200 mx-auto mb-4 rounded-full w-20 h-20">
-                    {getIconForType(member.type)}
-                    <User className="w-10 h-10 text-orange-700" />
-                  </div>
-                  <h3 className="mb-2 font-semibold text-gray-900 text-lg">
-                    {member.name}
-                  </h3>
-                  <p className="mb-1 font-medium text-orange-600 text-sm">
-                    {member.position}
-                  </p>
-                  <p className="mb-2 text-gray-500 text-xs">
-                    {member.department}
-                  </p>
-                  <div className="inline-block bg-orange-100 px-2 py-1 rounded-full text-orange-800 text-xs">
-                    {member.company}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Team Values */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 lg:p-12 rounded-3xl text-white">
-          <div className="mb-12 text-center">
-            <h3 className="mb-4 font-heading font-bold text-3xl">
-              Our Leadership Values
-            </h3>
-            <p className="mx-auto max-w-2xl text-blue-100 text-lg">
-              The principles that guide our leadership team in driving
-              innovation, sustainability, and excellence across all our
-              operations
-            </p>
-          </div>
-
-          <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-4">
+        {/* Overall Statistics */}
+        <div className="bg-white shadow-xl mb-16 p-8 rounded-3xl">
+          <div className="gap-8 grid grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
-              <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
+              <div className="mb-2 font-bold text-blue-600 text-3xl">500+</div>
+              <div className="text-gray-600 text-sm">Total Team Members</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-blue-600 text-3xl">5</div>
+              <div className="text-gray-600 text-sm">Operating Companies</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-blue-600 text-3xl">25+</div>
+              <div className="text-gray-600 text-sm">Leadership Positions</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-blue-600 text-3xl">100%</div>
+              <div className="text-gray-600 text-sm">
+                Commitment to Excellence
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Group Leadership Section */}
+        <div className="mb-20">
+          <div className="mb-12 text-center">
+            <div className="flex justify-center items-center gap-3 mb-6">
+              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl text-white">
                 <Crown className="w-8 h-8" />
               </div>
-              <h4 className="mb-2 font-bold">Visionary Leadership</h4>
-              <p className="text-blue-100 text-sm">
-                Strategic thinking and innovative approaches to industry
-                challenges
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
-                <Users className="w-8 h-8" />
+              <div>
+                <h3 className="font-heading font-bold text-gray-900 text-3xl">
+                  RMU Group Leadership
+                </h3>
+                <p className="text-gray-600">
+                  Board of Directors & Commissioners
+                </p>
               </div>
-              <h4 className="mb-2 font-bold">Collaborative Excellence</h4>
-              <p className="text-blue-100 text-sm">
-                Working together to achieve exceptional results across all
-                divisions
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
-                <User className="w-8 h-8" />
-              </div>
-              <h4 className="mb-2 font-bold">Integrity & Trust</h4>
-              <p className="text-blue-100 text-sm">
-                Building lasting relationships through transparency and ethical
-                practices
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
-                <Users className="w-8 h-8" />
-              </div>
-              <h4 className="mb-2 font-bold">Sustainable Growth</h4>
-              <p className="text-blue-100 text-sm">
-                Balancing business success with environmental and social
-                responsibility
-              </p>
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <h4 className="mb-4 font-heading font-bold text-2xl">
-              Ready to Work With Our Team?
-            </h4>
-            <p className="mx-auto mb-6 max-w-2xl text-blue-100">
-              Connect with our leadership team to discuss partnerships,
-              projects, and opportunities for collaboration in mining technology
-              and construction excellence.
-            </p>
-            <div className="flex sm:flex-row flex-col justify-center gap-4">
-              <button
-                onClick={() =>
-                  window.open(
-                    "mailto:info@rekayasamineralutama.com?subject=Leadership Contact"
-                  )
-                }
-                className="flex justify-center items-center gap-2 bg-yellow-400 hover:bg-yellow-300 px-8 py-3 rounded-lg font-semibold text-blue-900 transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Contact Leadership
-              </button>
-              <button
-                onClick={() => window.open("tel:+62212276133")}
-                className="flex justify-center items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-8 py-3 border border-white/30 rounded-lg font-semibold text-white transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                Schedule Meeting
-              </button>
+          <div className="gap-6 grid lg:grid-cols-2">
+            {groupLeadership.map((member) => renderTeamMember(member))}
+          </div>
+        </div>
+
+        {/* Company Teams Sections */}
+        {companyTeams.map((company, index) => (
+          <div key={company.companyId} className="mb-20">
+            {/* Company Header */}
+            <div className="mb-12 text-center">
+              <div className="flex justify-center items-center gap-3 mb-6">
+                <div
+                  className={`bg-gradient-to-br ${company.gradient} text-white p-4 rounded-2xl`}
+                >
+                  {company.icon}
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-gray-900 text-3xl">
+                    {company.companyName}
+                  </h3>
+                  <p className="text-gray-600">{company.companyType}</p>
+                </div>
+              </div>
+
+              {/* Company Stats */}
+              {company.keyStats && (
+                <div
+                  className={`bg-gradient-to-r ${company.gradient} text-white p-6 rounded-2xl inline-block`}
+                >
+                  <div className="flex gap-8">
+                    {company.keyStats.map((stat, statIndex) => (
+                      <div key={statIndex} className="text-center">
+                        <div className="flex justify-center items-center mb-1">
+                          {stat.icon}
+                        </div>
+                        <div className="font-bold text-lg">{stat.value}</div>
+                        <div className="opacity-90 text-xs">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Company Leadership */}
+            <div className="gap-6 grid lg:grid-cols-2">
+              {company.leadership.map((member) => renderTeamMember(member))}
+            </div>
+          </div>
+        ))}
+
+        {/* Leadership Philosophy */}
+        <div className="bg-gradient-to-r from-blue-900 to-gray-900 p-8 lg:p-12 rounded-3xl text-white">
+          <div className="text-center">
+            <h3 className="mb-6 font-heading font-bold text-3xl">
+              Our Leadership Philosophy
+            </h3>
+            <div className="gap-8 grid lg:grid-cols-3">
+              <div className="text-center">
+                <div className="flex justify-center items-center bg-white/10 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
+                  <Star className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h4 className="mb-2 font-semibold text-xl">Excellence</h4>
+                <p className="text-blue-100 text-sm">
+                  Striving for the highest standards across all our business
+                  units, from technology innovation to operational excellence
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center items-center bg-white/10 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
+                  <Award className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h4 className="mb-2 font-semibold text-xl">Innovation</h4>
+                <p className="text-blue-100 text-sm">
+                  Leading technological advancement in mining, maritime,
+                  manufacturing, and construction industries
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center items-center bg-white/10 backdrop-blur-sm mx-auto mb-4 rounded-full w-16 h-16">
+                  <Users className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h4 className="mb-2 font-semibold text-xl">Collaboration</h4>
+                <p className="text-blue-100 text-sm">
+                  Building strong partnerships across industries to create
+                  sustainable value for all stakeholders
+                </p>
+              </div>
             </div>
           </div>
         </div>
