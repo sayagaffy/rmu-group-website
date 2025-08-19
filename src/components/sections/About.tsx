@@ -39,38 +39,25 @@ const About = () => {
 
   const achievements = [
     { number: "18+", label: "Years of Excellence" },
-    { number: "3", label: "Specialized Companies" },
+    { number: "4+", label: "Group Companies" },
     { number: "200+", label: "Projects Completed" },
     { number: "100%", label: "ESG Compliance" },
   ];
 
   return (
-    <section
-      id="about"
-      className="bg-gray-50 section-padding"
-      aria-labelledby="about-main-heading"
-    >
+    <section id="about" className="bg-gray-50 section-padding">
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div
-            className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm"
-            aria-hidden="true"
-          >
+          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
             <Target className="w-4 h-4" />
             About RMU Group
           </div>
-          <h2
-            id="about-main-heading"
-            className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl"
-          >
+          <h2 className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl">
             Leading Indonesia&apos;s{" "}
             <span className="text-gradient">Mining Innovation</span>
           </h2>
-          <p
-            className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed"
-            aria-describedby="about-main-heading"
-          >
+          <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
             Pioneering sustainable mining technology and comprehensive
             construction services with a commitment to environmental stewardship
             and social responsibility
@@ -101,11 +88,8 @@ const About = () => {
                   <div
                     key={index}
                     className="flex gap-4 bg-white shadow-sm hover:shadow-md p-4 rounded-xl transition-shadow"
-                    role="article"
                   >
-                    <div className="mt-1 text-blue-600" aria-hidden="true">
-                      {point.icon}
-                    </div>
+                    <div className="mt-1 text-blue-600">{point.icon}</div>
                     <div>
                       <h4 className="mb-1 font-semibold text-gray-900">
                         {point.title}
@@ -124,29 +108,17 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <Target className="w-8 h-8 text-blue-600" aria-hidden="true" />
-                <h3
-                  className="font-heading font-bold text-gray-900 text-3xl"
-                  id="mission-heading"
-                >
+                <Target className="w-8 h-8 text-blue-600" />
+                <h3 className="font-heading font-bold text-gray-900 text-3xl">
                   Our Mission
                 </h3>
               </div>
 
               {/* Mission Points */}
-              <div
-                className="space-y-6"
-                role="list"
-                aria-labelledby="mission-heading"
-              >
+              <div className="space-y-6">
                 {missionPoints.map((point, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-4"
-                    role="listitem"
-                    aria-label={`Mission point ${index + 1}`}
-                  >
-                    <div className="mt-1" aria-hidden="true">
+                  <div key={index} className="flex gap-4">
+                    <div className="mt-1">
                       <CheckCircle className="w-6 h-6 text-green-600" />
                     </div>
                     <p className="text-gray-700 leading-relaxed">{point}</p>
@@ -156,28 +128,16 @@ const About = () => {
             </div>
 
             {/* Call to Action */}
-            <div
-              className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl text-white"
-              role="region"
-              aria-labelledby="cta-heading"
-            >
-              <h4
-                id="cta-heading"
-                className="mb-4 font-heading font-bold text-2xl"
-              >
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl text-white">
+              <h4 className="mb-4 font-heading font-bold text-2xl">
                 Ready to Transform Your Mining Operations?
               </h4>
-              <p className="mb-6 text-blue-100" aria-describedby="cta-heading">
+              <p className="mb-6 text-blue-100">
                 Discover how our MPAL technology can revolutionize your mineral
                 processing while maintaining the highest environmental
                 standards.
               </p>
-              <button
-                className="bg-yellow-400 hover:bg-yellow-300 px-6 py-3 rounded-lg font-semibold text-blue-900 transition-colors"
-                aria-label="Explore RMU Group Technology"
-                tabIndex={0}
-                onClick={() => window.open("/technology", "_blank")}
-              >
+              <button className="bg-yellow-400 hover:bg-yellow-300 px-6 py-3 rounded-lg font-semibold text-blue-900 transition-colors">
                 Explore Our Technology
               </button>
             </div>
@@ -185,15 +145,9 @@ const About = () => {
         </div>
 
         {/* Achievements Section */}
-        <div
-          className="bg-white shadow-xl p-8 lg:p-12 rounded-3xl"
-          aria-labelledby="achievements-heading"
-        >
+        <div className="bg-white shadow-xl p-8 lg:p-12 rounded-3xl">
           <div className="mb-12 text-center">
-            <h3
-              id="achievements-heading"
-              className="mb-4 font-heading font-bold text-gray-900 text-3xl"
-            >
+            <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
               Our Track Record
             </h3>
             <p className="text-gray-600 text-lg">
@@ -201,18 +155,10 @@ const About = () => {
             </p>
           </div>
 
-          <div className="gap-8 grid grid-cols-2 lg:grid-cols-4" role="list">
+          <div className="gap-8 grid grid-cols-2 lg:grid-cols-4">
             {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                className="group text-center"
-                role="listitem"
-                aria-label={`Achievement: ${achievement.label}`}
-              >
-                <div
-                  className="mb-2 font-bold text-blue-600 text-4xl lg:text-5xl group-hover:scale-110 transition-transform"
-                  aria-hidden="true"
-                >
+              <div key={index} className="group text-center">
+                <div className="mb-2 font-bold text-blue-600 text-4xl lg:text-5xl group-hover:scale-110 transition-transform">
                   {achievement.number}
                 </div>
                 <div className="font-medium text-gray-600">
@@ -224,12 +170,9 @@ const About = () => {
         </div>
 
         {/* Why Choose RMU Group */}
-        <div className="mt-20" aria-labelledby="why-choose-heading">
+        <div className="mt-20">
           <div className="mb-12 text-center">
-            <h3
-              id="why-choose-heading"
-              className="mb-4 font-heading font-bold text-gray-900 text-3xl"
-            >
+            <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
               Why Choose RMU Group?
             </h3>
             <p className="mx-auto max-w-2xl text-gray-600 text-lg">
@@ -238,16 +181,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-3" role="list">
-            <div
-              className="bg-white shadow-lg hover:shadow-xl p-8 rounded-2xl text-center transition-shadow"
-              role="listitem"
-              aria-label="Innovation Leadership"
-            >
-              <div
-                className="flex justify-center items-center bg-blue-100 mx-auto mb-4 rounded-full w-16 h-16"
-                aria-hidden="true"
-              >
+          <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-white shadow-lg hover:shadow-xl p-8 rounded-2xl text-center transition-shadow">
+              <div className="flex justify-center items-center bg-blue-100 mx-auto mb-4 rounded-full w-16 h-16">
                 <Lightbulb className="w-8 h-8 text-blue-600" />
               </div>
               <h4 className="mb-3 font-semibold text-gray-900 text-xl">
@@ -327,15 +263,9 @@ const About = () => {
         </div>
 
         {/* Company Timeline */}
-        <div
-          className="bg-gradient-to-br from-blue-600 to-blue-800 mt-20 p-8 lg:p-12 rounded-3xl text-white"
-          aria-labelledby="journey-heading"
-        >
+        <div className="bg-gradient-to-br from-blue-600 to-blue-800 mt-20 p-8 lg:p-12 rounded-3xl text-white">
           <div className="mb-12 text-center">
-            <h3
-              id="journey-heading"
-              className="mb-4 font-heading font-bold text-3xl"
-            >
+            <h3 className="mb-4 font-heading font-bold text-3xl">
               Our Journey
             </h3>
             <p className="mx-auto max-w-2xl text-blue-100 text-lg">
@@ -344,16 +274,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-4" role="list">
-            <div
-              className="text-center"
-              role="listitem"
-              aria-label="Company Timeline: Foundation in 1994"
-            >
-              <div
-                className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-20 h-20"
-                aria-hidden="true"
-              >
+          <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-4">
+            <div className="text-center">
+              <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm mx-auto mb-4 rounded-full w-20 h-20">
                 <span className="font-bold text-2xl">1994</span>
               </div>
               <h4 className="mb-2 font-bold">Foundation</h4>
@@ -414,4 +337,5 @@ const About = () => {
     </section>
   );
 };
+
 export default About;

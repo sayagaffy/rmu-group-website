@@ -2,13 +2,21 @@
 
 import React from "react";
 import {
-  Factory,
-  Ship,
   Building,
-  ArrowRight,
+  Ship,
+  Cog,
+  Waves,
+  Construction,
   MapPin,
   Calendar,
   DollarSign,
+  ArrowRight,
+  Users,
+  Award,
+  Globe,
+  Phone,
+  Mail,
+  Factory,
 } from "lucide-react";
 
 const Companies = () => {
@@ -16,65 +24,144 @@ const Companies = () => {
     {
       id: "rmu",
       name: "PT Rekayasa Mineral Utama",
-      type: "Core Technology",
-      tagline: "Advanced Mining Technology",
+      tagline: "Advanced MPAL Technology for Sustainable Mining",
+      type: "Mining Technology",
       description:
-        "Modular Pressure Acid Leaching (MPAL) technology untuk processing mineral menjadi Energy Transition Metals dan Rare Earth Metals dengan prinsip ESG-based yang berkelanjutan.",
+        "Leading provider of Modular Pressure Acid Leaching (MPAL) technology for sustainable mineral processing. Our patented spiral tube reactor system enables scalable, cost-effective processing of nickel laterite ore with significantly lower environmental impact compared to traditional methods.",
       services: [
         "MPAL Technology Development",
-        "Mineral Processing Solutions",
-        "Laboratory Testing Services",
-        "Engineering Consultancy",
+        "Mining Process Plant Design",
+        "Hydrometallurgical Solutions",
+        "Mine Mouth Plant Setup",
+        "Green Tailings Processing",
         "ESG Compliance Solutions",
-        "Technology Licensing",
       ],
-      icon: <Factory className="w-12 h-12" />,
-      location: "Bandung, West Java",
-      website: "www.rmineral.com",
+      icon: <Cog className="w-12 h-12" />,
+      location: "Jakarta & Bandung",
+      website: "www.rekayasamineralutama.com",
       email: "info@rekayasamineralutama.com",
       phone: "+62 21 22761331",
+      established: "2006",
       highlights: [
+        "19 Years Innovation",
         "Patented MPAL Technology",
-        "Research Laboratory",
-        "Future Workshop",
+        "ESG-Based Solutions",
+        "Energy Transition Metals",
       ],
       gradient: "from-blue-600 to-blue-800",
     },
     {
-      id: "gemilang-kharisma",
-      name: "PT Gemilang Kharisma",
-      type: "Marine Operations",
-      tagline: "Sustainable Marine Mining",
+      id: "pt-bnp",
+      name: "PT Bahana Nusa Pasifik",
+      tagline: "Trusted Maritime Transportation & Logistics Solutions",
+      type: "Maritime Services",
       description:
-        "Spesialis marine sand mining operations di perairan Batam dengan aset lahan seluas 33.200 m² bernilai 400 Miliar Rupiah dan estimasi sumber daya pasir laut 20 juta m³.",
+        "PT Bahana Nusa Pasifik adalah perusahaan penyedia jasa transportasi angkutan barang khusus dengan kapal tongkang yang telah beroperasi sejak tahun 2020. Dengan pengalaman dan kompetensi, kami menyediakan solusi transportasi laut yang efisien, handal dan aman bagi seluruh pelanggan/mitra kami.",
       services: [
-        "Marine Sand Mining",
-        "Sediment Cleaning & Treatment",
-        "Marine Transportation",
-        "Cargo Barge Services",
-        "Marine Environmental Management",
-        "Port Operations",
+        "Specialized Cargo Transportation (230-300 feet)",
+        "Barge Vessel Operations",
+        "Port Agency Relations",
+        "Marine Logistics Management",
+        "Cargo Handling & Storage",
+        "Maritime Safety Compliance",
       ],
       icon: <Ship className="w-12 h-12" />,
-      location: "Batam, Riau Islands",
-      email: "gemilangkharisma1@gmail.com",
-      phone: "+62 778 4805412",
+      location: "Bandung, West Java",
+      email: "office@bahananusapasifik.com",
+      phone: "+62 22 [Contact for Details]",
       established: "2020",
-      assets: "400 Billion Rupiah",
       highlights: [
-        "33,200 m² Land Assets",
-        "20M m³ Sand Resources",
-        "Marine Expertise",
+        "5 Years Maritime Experience",
+        "Large Fleet Capacity (230-300 feet)",
+        "Multi-Port Operations",
+        "Safety First Approach",
       ],
-      gradient: "from-teal-600 to-cyan-700",
+      gradient: "from-blue-600 to-cyan-700",
     },
     {
-      id: "kembar-jaya-abadi",
-      name: "PT Kembar Jaya Abadi",
-      type: "Construction Services",
-      tagline: "Building Excellence Since 1994",
+      id: "pt-prn",
+      name: "PT Perkakas Rekadaya Nusantara",
+      tagline: "Advanced Tools & Parts Manufacturing Excellence",
+      type: "Manufacturing",
       description:
-        "Penyedia jasa konstruksi komprehensif untuk building, civil, dan infrastructure projects dengan pengalaman sejak 1994. Tersertifikasi ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018.",
+        "PT Perkakas Rekadaya Nusantara (PRN) adalah perusahaan manufaktur yang berbasis di Subang dengan spesialisasi komponen otomotif, jigs & fixtures, dies, pallets, serta mesin khusus (special purpose machines). Dengan fasilitas lengkap, tenaga kerja terampil ±419 orang, sertifikasi ISO, serta klien global, PRN telah menempatkan diri sebagai pemain penting di industri manufaktur Indonesia.",
+      services: [
+        "Mass Production (Automotive Components)",
+        "Jigs & Fixtures Manufacturing",
+        "Dies Production (Bending, Piercing, Stamping)",
+        "Special Purpose Machines",
+        "Steel Pallets & Trolley Manufacturing",
+        "Tools & Parts Manufacturing",
+      ],
+      icon: <Factory className="w-12 h-12" />,
+      location: "Subang, West Java",
+      website: "www.prn-subang.com",
+      email: "prnsbg@indosat.net.id",
+      phone: "+62 260 472504",
+      fax: "+62 260 472506",
+      established: "2006",
+      totalEmployees: "±419 people",
+      landArea: "50 hectares",
+      highlights: [
+        "19 Years Manufacturing Excellence",
+        "ISO 9001:2008 Certified",
+        "419+ Skilled Workforce",
+        "Global Automotive Clients",
+        "50 Hectare Facility",
+      ],
+      gradient: "from-gray-600 to-gray-800",
+      certifications: [
+        "ISO 9001:2008 - Quality Management",
+        "ISO 14001:2004 - Environment Management",
+        "OHSAS 18001:2007 - Health & Safety",
+      ],
+      majorClients: [
+        "Toyota (TMMIN)",
+        "Astra Daihatsu",
+        "Yamaha",
+        "Suzuki",
+        "Kawasaki",
+        "Chevrolet",
+        "Hitachi",
+        "Siemens",
+      ],
+    },
+    {
+      id: "gemilang",
+      name: "PT Gemilang Kharisma",
+      tagline: "Sustainable Marine Sand Mining Operations",
+      type: "Marine Operations",
+      description:
+        "Perusahaan yang bergerak di bidang penambangan pasir laut dan melakukan kegiatannya di perairan pantai Batam. Memiliki aset lahan seluas 33.200 m² atau senilai 400 Miliar Rupiah dengan kepemilikan anak perusahaan sebesar 70%.",
+      services: [
+        "Marine Sand Mining",
+        "Coastal Water Operations",
+        "Environmental Compliance",
+        "Sustainable Resource Extraction",
+        "Marine Equipment Operations",
+        "Coastal Development Support",
+      ],
+      icon: <Waves className="w-12 h-12" />,
+      location: "Batam Waters",
+      email: "info@gemilangkharisma.com",
+      phone: "+62 778 [Contact for Details]",
+      assets: "Land Assets: 33,200 m² (400 Billion IDR)",
+      established: "2020",
+      highlights: [
+        "Strategic Batam Location",
+        "400 Billion IDR Assets",
+        "Sustainable Operations",
+        "70% Group Ownership",
+      ],
+      gradient: "from-cyan-600 to-blue-700",
+    },
+    {
+      id: "kembar",
+      name: "PT Kembar Jaya Abadi",
+      tagline: "Building Excellence, Delivering Trust",
+      type: "Construction",
+      description:
+        "Established construction company specializing in comprehensive building and infrastructure development with 31 years of proven excellence. Tersertifikasi ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018.",
       services: [
         "Building Construction",
         "Civil Engineering",
@@ -90,9 +177,10 @@ const Companies = () => {
       phone: "+62 541 271044",
       established: "1994",
       highlights: [
-        "29 Years Experience",
+        "31 Years Experience",
         "ISO Certified",
         "Infrastructure Specialist",
+        "East Kalimantan Leader",
       ],
       gradient: "from-orange-600 to-red-700",
     },
@@ -102,13 +190,13 @@ const Companies = () => {
     {
       name: "Specialized Cargo Transportation",
       description:
-        "Barge vessel transportation services operating commercially since 2020",
+        "Barge vessel transportation services operating commercially since 2020, supporting maritime logistics across Indonesian waters",
       type: "Transportation",
     },
     {
       name: "Marine Sediment Solutions",
       description:
-        "Specializing in marine sediment cleaning, treatment, transport, and utilization",
+        "Specializing in marine sediment cleaning, treatment, transport, and utilization for environmental restoration projects",
       type: "Environmental",
     },
   ];
@@ -124,17 +212,19 @@ const Companies = () => {
           </div>
           <h2 className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl">
             Integrated Portfolio of{" "}
-            <span className="text-gradient">Excellence</span>
+            <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 text-gradient text-transparent">
+              Excellence
+            </span>
           </h2>
           <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
-            Three specialized companies working together to deliver
-            comprehensive solutions across mining technology, marine operations,
-            and construction services
+            Five specialized companies working together to deliver comprehensive
+            solutions across mining technology, maritime transportation,
+            advanced manufacturing, marine operations, and construction services
           </p>
         </div>
 
         {/* Main Companies Grid */}
-        <div className="space-y-12 mb-20">
+        <div className="space-y-16 mb-20">
           {companies.map((company, index) => (
             <div
               key={company.id}
@@ -150,11 +240,11 @@ const Companies = () => {
               >
                 <div className="flex items-start gap-4">
                   <div
-                    className={`bg-gradient-to-br ${company.gradient} text-white p-4 rounded-2xl`}
+                    className={`bg-gradient-to-br ${company.gradient} text-white p-4 rounded-2xl shadow-lg`}
                   >
                     {company.icon}
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <div
                       className={`inline-block bg-gradient-to-r ${company.gradient} text-white px-3 py-1 rounded-full text-sm font-medium mb-2`}
                     >
@@ -173,24 +263,32 @@ const Companies = () => {
                   {company.description}
                 </p>
 
-                {/* Key Information */}
+                {/* Key Information Grid */}
                 <div className="gap-4 grid grid-cols-1 sm:grid-cols-2">
                   <div className="flex items-center gap-2 text-gray-600">
                     <MapPin className="w-5 h-5 text-blue-600" />
                     <span className="text-sm">{company.location}</span>
                   </div>
-                  {company.established && (
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Calendar className="w-5 h-5 text-blue-600" />
+                    <span className="text-sm">Est. {company.established}</span>
+                  </div>
+                  {company.totalEmployees && (
                     <div className="flex items-center gap-2 text-gray-600">
-                      <Calendar className="w-5 h-5 text-blue-600" />
-                      <span className="text-sm">
-                        Est. {company.established}
-                      </span>
+                      <Users className="w-5 h-5 text-blue-600" />
+                      <span className="text-sm">{company.totalEmployees}</span>
                     </div>
                   )}
                   {company.assets && (
                     <div className="flex items-center gap-2 text-gray-600">
                       <DollarSign className="w-5 h-5 text-blue-600" />
                       <span className="text-sm">{company.assets}</span>
+                    </div>
+                  )}
+                  {company.landArea && (
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <Globe className="w-5 h-5 text-blue-600" />
+                      <span className="text-sm">{company.landArea}</span>
                     </div>
                   )}
                 </div>
@@ -207,15 +305,68 @@ const Companies = () => {
                   ))}
                 </div>
 
+                {/* Certifications (if available) */}
+                {company.certifications && (
+                  <div className="bg-green-50 p-4 rounded-xl">
+                    <h4 className="flex items-center gap-2 mb-2 font-semibold text-green-800">
+                      <Award className="w-4 h-4" />
+                      Certifications
+                    </h4>
+                    <div className="space-y-1">
+                      {company.certifications.map((cert, certIndex) => (
+                        <div key={certIndex} className="text-green-700 text-sm">
+                          • {cert}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Major Clients (if available) */}
+                {company.majorClients && (
+                  <div className="bg-blue-50 p-4 rounded-xl">
+                    <h4 className="mb-2 font-semibold text-blue-800">
+                      Major Clients
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {company.majorClients.map((client, clientIndex) => (
+                        <span
+                          key={clientIndex}
+                          className="bg-blue-100 px-2 py-1 rounded font-medium text-blue-700 text-xs"
+                        >
+                          {client}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Contact Info */}
                 <div className="bg-gray-50 p-6 rounded-xl">
                   <h4 className="mb-3 font-semibold text-gray-900">
                     Contact Information
                   </h4>
                   <div className="space-y-2 text-gray-600 text-sm">
-                    <div>📞 {company.phone}</div>
-                    <div>✉️ {company.email}</div>
-                    {company.website && <div>🌐 {company.website}</div>}
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      <span>{company.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      <span>{company.email}</span>
+                    </div>
+                    {company.website && (
+                      <div className="flex items-center gap-2">
+                        <Globe className="w-4 h-4" />
+                        <span>{company.website}</span>
+                      </div>
+                    )}
+                    {company.fax && (
+                      <div className="flex items-center gap-2">
+                        <span className="w-4 h-4 text-xs text-center">📠</span>
+                        <span>Fax: {company.fax}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -226,7 +377,7 @@ const Companies = () => {
                   index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
                 }`}
               >
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 shadow-lg p-8 rounded-3xl">
                   <h4 className="mb-6 font-heading font-bold text-gray-900 text-2xl">
                     Our Services
                   </h4>
@@ -234,10 +385,10 @@ const Companies = () => {
                     {company.services.map((service, serviceIndex) => (
                       <div
                         key={serviceIndex}
-                        className="group flex items-center gap-3 bg-white hover:shadow-md p-4 rounded-lg transition-shadow"
+                        className="group flex items-center gap-3 bg-white hover:shadow-md p-4 rounded-lg transition-all duration-300"
                       >
                         <div
-                          className={`w-2 h-2 bg-gradient-to-r ${company.gradient} rounded-full`}
+                          className={`w-3 h-3 bg-gradient-to-r ${company.gradient} rounded-full flex-shrink-0`}
                         ></div>
                         <span className="font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
                           {service}
@@ -250,7 +401,7 @@ const Companies = () => {
                     onClick={() =>
                       window.open(`/companies/${company.id}`, "_blank")
                     }
-                    className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2 group`}
+                    className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group`}
                   >
                     <span>Learn More</span>
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -291,6 +442,41 @@ const Companies = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Company Statistics */}
+        <div className="bg-gradient-to-r from-gray-900 to-blue-900 mt-16 p-8 lg:p-12 rounded-3xl text-white">
+          <div className="mb-8 text-center">
+            <h3 className="mb-4 font-heading font-bold text-3xl">
+              RMU Group at a Glance
+            </h3>
+            <p className="text-blue-100 text-lg">
+              Comprehensive business portfolio across strategic industries
+            </p>
+          </div>
+
+          <div className="gap-8 grid grid-cols-2 lg:grid-cols-5">
+            <div className="text-center">
+              <div className="mb-2 font-bold text-cyan-400 text-4xl">5</div>
+              <div className="text-blue-100 text-sm">Operating Companies</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-cyan-400 text-4xl">19+</div>
+              <div className="text-blue-100 text-sm">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-cyan-400 text-4xl">500+</div>
+              <div className="text-blue-100 text-sm">Total Workforce</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-cyan-400 text-4xl">50+</div>
+              <div className="text-blue-100 text-sm">Hectares Facilities</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-2 font-bold text-cyan-400 text-4xl">∞</div>
+              <div className="text-blue-100 text-sm">Sustainable Future</div>
+            </div>
           </div>
         </div>
       </div>

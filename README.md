@@ -70,7 +70,7 @@ npm run build
 
 1. Push to GitHub main branch
 2. Netlify auto-deploys
-3. Domain: www.rmineral.com
+3. Domain: www.rekayasamineralutama.com
 
 ## 📝 Content Updates
 

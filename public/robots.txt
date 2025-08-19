@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Crawl-delay: 1
-Sitemap: https://www.rmineral.com/sitemap.xml
+Sitemap: https://www.rekayasamineralutama.com/sitemap.xml
 
 # Block access to admin areas (if any in future)
 Disallow: /admin/

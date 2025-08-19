@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Leading provider of MPAL technology for sustainable mineral processing, marine sand mining, and comprehensive construction services in Indonesia.",
   keywords:
     "MPAL technology, mining, construction, marine sand, mineral processing, Indonesia, ESG, sustainable mining",
-  authors: [{ name: "RMU Group", url: "https://www.rmineral.com" }],
+  authors: [{ name: "RMU Group", url: "https://www.rekayasamineralutama.com" }],
   creator: "RMU Group",
   publisher: "RMU Group",
   robots: "index, follow",
@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link rel="canonical" href="https://www.rmineral.com" />
+        <link rel="canonical" href="https://www.rekayasamineralutama.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -73,8 +73,8 @@ export default function RootLayout({
               alternateName: "Rekayasa Mineral Utama Group",
               description:
                 "Advanced mining technology and construction services provider specializing in MPAL technology for sustainable mineral processing",
-              url: "https://www.rmineral.com",
-              logo: "https://www.rmineral.com/images/logo.png",
+              url: "https://www.rekayasamineralutama.com",
+              logo: "https://www.rekayasamineralutama.com/images/logo.png",
               foundingDate: "2006",
               address: {
                 "@type": "PostalAddress",
@@ -90,7 +90,7 @@ export default function RootLayout({
                 contactType: "Customer Service",
                 email: "info@rekayasamineralutama.com",
               },
-              sameAs: ["https://www.rmineral.com"],
+              sameAs: ["https://www.rekayasamineralutama.com"],
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
                 name: "Mining and Construction Services",

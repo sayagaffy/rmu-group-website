@@ -41,14 +41,14 @@ const Team = () => {
     {
       id: "ibih-hassan",
       name: "IBIH TG HASSAN",
-      position: "Commissioner",
+      position: "President Commissioner",
       company: "PT Rekayasa Mineral Utama",
       department: "Board of Commissioners",
     },
     {
       id: "abdurrachman",
       name: "IR. ABDURRACHMAN",
-      position: "President Commissioner",
+      position: "Commissioner",
       company: "PT Rekayasa Mineral Utama",
       department: "Board of Commissioners",
     },

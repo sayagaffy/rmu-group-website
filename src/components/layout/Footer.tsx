@@ -17,13 +17,16 @@ const Footer = () => {
 
   const companies = [
     "PT Rekayasa Mineral Utama",
+    "PT Bahana Nusa Pasifik",
+    "PT Perkakas Rekadaya Nusantara",
     "PT Gemilang Kharisma",
     "PT Kembar Jaya Abadi",
-    "Subsidiary Companies",
   ];
 
   const services = [
     "MPAL Technology",
+    "Maritime Transportation",
+    "Manufacturing Excellence",
     "Marine Sand Mining",
     "Construction Services",
     "Engineering Solutions",
@@ -57,18 +60,19 @@ const Footer = () => {
               <div>
                 <h3 className="font-heading font-bold text-2xl">RMU Group</h3>
                 <p className="text-gray-400 text-sm">
-                  Mining Technology Excellence
+                  Integrated Industrial Excellence
                 </p>
               </div>
             </div>
             <p className="mb-6 text-gray-300 leading-relaxed">
-              Leading provider of advanced mining technology and comprehensive
-              construction services with sustainable ESG-based principles for
-              Indonesia&apos;s development.
+              Leading provider of advanced mining technology, maritime
+              transportation, manufacturing excellence, marine operations, and
+              comprehensive construction services with sustainable ESG-based
+              principles for Indonesia&apos;s development.
             </p>
             <div className="flex items-center gap-2 text-gray-400">
               <Globe className="w-5 h-5" />
-              <span>www.rmineral.com</span>
+              <span>www.rekayasamineralutama.com</span>
             </div>
           </div>
 
@@ -95,11 +99,15 @@ const Footer = () => {
             <h4 className="mb-6 font-semibold text-lg">Our Companies</h4>
             <ul className="space-y-3">
               {companies.map((company, index) => (
-                <li key={index} className="text-gray-300">
+                <li key={index} className="text-gray-300 text-sm">
                   {company}
                 </li>
               ))}
             </ul>
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 mt-6 px-4 py-2 rounded-lg text-white text-center">
+              <div className="font-bold text-lg">5</div>
+              <div className="text-xs">Integrated Companies</div>
+            </div>
           </div>
 
           {/* Services & Contact */}
@@ -127,6 +135,48 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
                 <span>info@rekayasamineralutama.com</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Footer */}
+      <div className="border-gray-800 border-t">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+          <div className="flex md:flex-row flex-col justify-between items-center">
+            <div className="text-gray-400 text-sm">
+              © {currentYear} RMU Group. All rights reserved.
+            </div>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+
+          {/* ESG Commitment */}
+          <div className="mt-6 pt-6 border-gray-800 border-t">
+            <div className="text-center">
+              <p className="text-gray-400 text-sm">
+                Committed to Environmental, Social, and Governance (ESG)
+                excellence • Sustainable mining technology • Responsible
+                maritime operations • Green manufacturing practices
+              </p>
             </div>
           </div>
         </div>
