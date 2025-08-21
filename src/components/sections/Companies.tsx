@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useState } from "react";
 import {
   Building,
   Ship,
@@ -20,6 +21,25 @@ import {
 } from "lucide-react";
 
 const Companies = () => {
+  const [loadingStates, setLoadingStates] = useState({});
+  const formatWebsiteURL = (website) => {
+    if (!website) return null;
+    let cleanUrl = website.replace(/^(https?:\/\/)?(www\.)?/, '');
+    return `https://${cleanUrl}`;
+  };
+  const handleWebsiteClick = (companyId, website) => {
+    setLoadingStates(prev => ({ ...prev, [companyId]: true }));
+    
+    const websiteUrl = formatWebsiteURL(website);
+    if (websiteUrl) {
+      window.open(websiteUrl, "_blank", "noopener,noreferrer");
+    }
+    
+    // Reset loading state after a short delay
+    setTimeout(() => {
+      setLoadingStates(prev => ({ ...prev, [companyId]: false }));
+    }, 1000);
+  };
   const companies = [
     {
       id: "rmu",
@@ -67,6 +87,7 @@ const Companies = () => {
       ],
       icon: <Ship className="w-12 h-12" />,
       location: "Bandung, West Java",
+      website: "www.bahananusapasifik.com",
       email: "office@bahananusapasifik.com",
       phone: "+62 22 [Contact for Details]",
       established: "2020",
@@ -95,7 +116,7 @@ const Companies = () => {
       ],
       icon: <Factory className="w-12 h-12" />,
       location: "Subang, West Java",
-      website: "www.prn-subang.com",
+      website: "www.prn.co.id",
       email: "prnsbg@indosat.net.id",
       phone: "+62 260 472504",
       fax: "+62 260 472506",
@@ -172,7 +193,7 @@ const Companies = () => {
       ],
       icon: <Building className="w-12 h-12" />,
       location: "Samarinda, East Kalimantan",
-      website: "www.ptkembarjayaabadi.com",
+      website: "www.ptkembarjayaabadi.com/",
       email: "kembarjaya_abadi@yahoo.co.id",
       phone: "+62 541 271044",
       established: "1994",
@@ -397,15 +418,24 @@ const Companies = () => {
                     ))}
                   </div>
 
-                  <button
-                    onClick={() =>
-                      window.open(`/companies/${company.id}`, "_blank")
-                    }
-                    className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group`}
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                  </button>
+                  {company.website && (
+    <button
+      onClick={() => handleWebsiteClick(company.id, company.website)}
+      disabled={loadingStates[company.id]}
+      className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
+        loadingStates[company.id] ? 'opacity-75 cursor-not-allowed' : ''
+      }`}
+    >
+      <span>
+        {loadingStates[company.id] ? 'Opening...' : 'Visit Website'}
+      </span>
+      {loadingStates[company.id] ? (
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      ) : (
+        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+      )}
+    </button>
+  )}
                 </div>
               </div>
             </div>
