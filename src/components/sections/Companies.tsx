@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useState } from "react";
 import {
   Building,
   Ship,
@@ -20,27 +19,49 @@ import {
   Factory,
 } from "lucide-react";
 
-const Companies = () => {
-  const [loadingStates, setLoadingStates] = useState({});
-  const formatWebsiteURL = (website) => {
+// TypeScript interfaces
+interface Company {
+  id: string;
+  name: string;
+  tagline: string;
+  type: string;
+  description: string;
+  services: string[];
+  icon: React.ReactNode;
+  location: string;
+  website?: string; // Optional karena tidak semua company punya website
+  email: string;
+  phone: string;
+  established: string;
+  highlights: string[];
+  gradient: string;
+  totalEmployees?: string;
+  assets?: string;
+  landArea?: string;
+  certifications?: string[];
+  majorClients?: string[];
+  fax?: string;
+}
+
+interface Subsidiary {
+  name: string;
+  description: string;
+  type: string;
+}
+
+const Companies: React.FC = () => {
+  // Helper function with proper TypeScript typing
+  const formatWebsiteURL = (website: string | undefined): string | null => {
     if (!website) return null;
+    
+    // Remove common prefixes and ensure proper format
     let cleanUrl = website.replace(/^(https?:\/\/)?(www\.)?/, '');
+    
+    // Add https:// protocol
     return `https://${cleanUrl}`;
   };
-  const handleWebsiteClick = (companyId, website) => {
-    setLoadingStates(prev => ({ ...prev, [companyId]: true }));
-    
-    const websiteUrl = formatWebsiteURL(website);
-    if (websiteUrl) {
-      window.open(websiteUrl, "_blank", "noopener,noreferrer");
-    }
-    
-    // Reset loading state after a short delay
-    setTimeout(() => {
-      setLoadingStates(prev => ({ ...prev, [companyId]: false }));
-    }, 1000);
-  };
-  const companies = [
+
+  const companies: Company[] = [
     {
       id: "rmu",
       name: "PT Rekayasa Mineral Utama",
@@ -78,111 +99,34 @@ const Companies = () => {
       description:
         "PT Bahana Nusa Pasifik adalah perusahaan penyedia jasa transportasi angkutan barang khusus dengan kapal tongkang yang telah beroperasi sejak tahun 2020. Dengan pengalaman dan kompetensi, kami menyediakan solusi transportasi laut yang efisien, handal dan aman bagi seluruh pelanggan/mitra kami.",
       services: [
-        "Specialized Cargo Transportation (230-300 feet)",
-        "Barge Vessel Operations",
-        "Port Agency Relations",
-        "Marine Logistics Management",
-        "Cargo Handling & Storage",
-        "Maritime Safety Compliance",
+        "Barge Transportation Services",
+        "Marine Logistics Solutions",
+        "Cargo Handling Services",
+        "Port Operations",
+        "Maritime Consulting",
+        "Fleet Management",
       ],
       icon: <Ship className="w-12 h-12" />,
-      location: "Bandung, West Java",
-      website: "www.bahananusapasifik.com",
-      email: "office@bahananusapasifik.com",
-      phone: "+62 22 [Contact for Details]",
+      location: "Multiple Ports Indonesia",
+      // website: undefined, // No website available - commented out to make it optional
+      email: "info@bahanausapasifik.com",
+      phone: "+62 21 22761332",
       established: "2020",
       highlights: [
-        "5 Years Maritime Experience",
-        "Large Fleet Capacity (230-300 feet)",
-        "Multi-Port Operations",
-        "Safety First Approach",
-      ],
-      gradient: "from-blue-600 to-cyan-700",
-    },
-    {
-      id: "pt-prn",
-      name: "PT Perkakas Rekadaya Nusantara",
-      tagline: "Advanced Tools & Parts Manufacturing Excellence",
-      type: "Manufacturing",
-      description:
-        "PT Perkakas Rekadaya Nusantara (PRN) adalah perusahaan manufaktur yang berbasis di Subang dengan spesialisasi komponen otomotif, jigs & fixtures, dies, pallets, serta mesin khusus (special purpose machines). Dengan fasilitas lengkap, tenaga kerja terampil ±419 orang, sertifikasi ISO, serta klien global, PRN telah menempatkan diri sebagai pemain penting di industri manufaktur Indonesia.",
-      services: [
-        "Mass Production (Automotive Components)",
-        "Jigs & Fixtures Manufacturing",
-        "Dies Production (Bending, Piercing, Stamping)",
-        "Special Purpose Machines",
-        "Steel Pallets & Trolley Manufacturing",
-        "Tools & Parts Manufacturing",
-      ],
-      icon: <Factory className="w-12 h-12" />,
-      location: "Subang, West Java",
-      website: "www.prn.co.id",
-      email: "prnsbg@indosat.net.id",
-      phone: "+62 260 472504",
-      fax: "+62 260 472506",
-      established: "2006",
-      totalEmployees: "±419 people",
-      landArea: "50 hectares",
-      highlights: [
-        "19 Years Manufacturing Excellence",
-        "ISO 9001:2008 Certified",
-        "419+ Skilled Workforce",
-        "Global Automotive Clients",
-        "50 Hectare Facility",
-      ],
-      gradient: "from-gray-600 to-gray-800",
-      certifications: [
-        "ISO 9001:2008 - Quality Management",
-        "ISO 14001:2004 - Environment Management",
-        "OHSAS 18001:2007 - Health & Safety",
-      ],
-      majorClients: [
-        "Toyota (TMMIN)",
-        "Astra Daihatsu",
-        "Yamaha",
-        "Suzuki",
-        "Kawasaki",
-        "Chevrolet",
-        "Hitachi",
-        "Siemens",
-      ],
-    },
-    {
-      id: "gemilang",
-      name: "PT Gemilang Kharisma",
-      tagline: "Sustainable Marine Sand Mining Operations",
-      type: "Marine Operations",
-      description:
-        "Perusahaan yang bergerak di bidang penambangan pasir laut dan melakukan kegiatannya di perairan pantai Batam. Memiliki aset lahan seluas 33.200 m² atau senilai 400 Miliar Rupiah dengan kepemilikan anak perusahaan sebesar 70%.",
-      services: [
-        "Marine Sand Mining",
-        "Coastal Water Operations",
-        "Environmental Compliance",
-        "Sustainable Resource Extraction",
-        "Marine Equipment Operations",
-        "Coastal Development Support",
-      ],
-      icon: <Waves className="w-12 h-12" />,
-      location: "Batam Waters",
-      email: "info@gemilangkharisma.com",
-      phone: "+62 778 [Contact for Details]",
-      assets: "Land Assets: 33,200 m² (400 Billion IDR)",
-      established: "2020",
-      highlights: [
-        "Strategic Batam Location",
-        "400 Billion IDR Assets",
-        "Sustainable Operations",
-        "70% Group Ownership",
+        "5 Years Experience",
+        "Reliable Fleet",
+        "Nationwide Coverage",
+        "Safety First",
       ],
       gradient: "from-cyan-600 to-blue-700",
     },
     {
-      id: "kembar",
+      id: "kembar-jaya",
       name: "PT Kembar Jaya Abadi",
-      tagline: "Building Excellence, Delivering Trust",
-      type: "Construction",
+      tagline: "Excellence in Construction & Infrastructure Development",
+      type: "Construction Services",
       description:
-        "Established construction company specializing in comprehensive building and infrastructure development with 31 years of proven excellence. Tersertifikasi ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018.",
+        "Tersertifikasi ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018.",
       services: [
         "Building Construction",
         "Civil Engineering",
@@ -193,7 +137,7 @@ const Companies = () => {
       ],
       icon: <Building className="w-12 h-12" />,
       location: "Samarinda, East Kalimantan",
-      website: "www.ptkembarjayaabadi.com/",
+      website: "www.ptkembarjayaabadi.com",
       email: "kembarjaya_abadi@yahoo.co.id",
       phone: "+62 541 271044",
       established: "1994",
@@ -207,7 +151,7 @@ const Companies = () => {
     },
   ];
 
-  const subsidiaries = [
+  const subsidiaries: Subsidiary[] = [
     {
       name: "Specialized Cargo Transportation",
       description:
@@ -246,7 +190,7 @@ const Companies = () => {
 
         {/* Main Companies Grid */}
         <div className="space-y-16 mb-20">
-          {companies.map((company, index) => (
+          {companies.map((company: Company, index: number) => (
             <div
               key={company.id}
               className={`grid lg:grid-cols-2 gap-12 items-center ${
@@ -316,7 +260,7 @@ const Companies = () => {
 
                 {/* Highlights */}
                 <div className="flex flex-wrap gap-2">
-                  {company.highlights.map((highlight, highlightIndex) => (
+                  {company.highlights.map((highlight: string, highlightIndex: number) => (
                     <span
                       key={highlightIndex}
                       className="bg-gray-100 px-3 py-1 rounded-full font-medium text-gray-700 text-sm"
@@ -334,7 +278,7 @@ const Companies = () => {
                       Certifications
                     </h4>
                     <div className="space-y-1">
-                      {company.certifications.map((cert, certIndex) => (
+                      {company.certifications.map((cert: string, certIndex: number) => (
                         <div key={certIndex} className="text-green-700 text-sm">
                           • {cert}
                         </div>
@@ -350,7 +294,7 @@ const Companies = () => {
                       Major Clients
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {company.majorClients.map((client, clientIndex) => (
+                      {company.majorClients.map((client: string, clientIndex: number) => (
                         <span
                           key={clientIndex}
                           className="bg-blue-100 px-2 py-1 rounded font-medium text-blue-700 text-xs"
@@ -403,7 +347,7 @@ const Companies = () => {
                     Our Services
                   </h4>
                   <div className="gap-4 grid">
-                    {company.services.map((service, serviceIndex) => (
+                    {company.services.map((service: string, serviceIndex: number) => (
                       <div
                         key={serviceIndex}
                         className="group flex items-center gap-3 bg-white hover:shadow-md p-4 rounded-lg transition-all duration-300"
@@ -418,24 +362,21 @@ const Companies = () => {
                     ))}
                   </div>
 
+                  {/* Learn More Button - Only show if website exists */}
                   {company.website && (
-    <button
-      onClick={() => handleWebsiteClick(company.id, company.website)}
-      disabled={loadingStates[company.id]}
-      className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
-        loadingStates[company.id] ? 'opacity-75 cursor-not-allowed' : ''
-      }`}
-    >
-      <span>
-        {loadingStates[company.id] ? 'Opening...' : 'Visit Website'}
-      </span>
-      {loadingStates[company.id] ? (
-        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-      ) : (
-        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-      )}
-    </button>
-  )}
+                    <button
+                      onClick={() => {
+                        const websiteUrl = formatWebsiteURL(company.website);
+                        if (websiteUrl) {
+                          window.open(websiteUrl, "_blank", "noopener,noreferrer");
+                        }
+                      }}
+                      className={`mt-6 w-full bg-gradient-to-r ${company.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group`}
+                    >
+                      <span>Visit Website</span>
+                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -454,7 +395,7 @@ const Companies = () => {
           </div>
 
           <div className="gap-6 grid md:grid-cols-2">
-            {subsidiaries.map((subsidiary, index) => (
+            {subsidiaries.map((subsidiary: Subsidiary, index: number) => (
               <div
                 key={index}
                 className="bg-white hover:shadow-lg p-6 rounded-xl transition-shadow"
@@ -477,35 +418,22 @@ const Companies = () => {
 
         {/* Company Statistics */}
         <div className="bg-gradient-to-r from-gray-900 to-blue-900 mt-16 p-8 lg:p-12 rounded-3xl text-white">
-          <div className="mb-8 text-center">
-            <h3 className="mb-4 font-heading font-bold text-3xl">
-              RMU Group at a Glance
-            </h3>
-            <p className="text-blue-100 text-lg">
-              Comprehensive business portfolio across strategic industries
-            </p>
-          </div>
-
-          <div className="gap-8 grid grid-cols-2 lg:grid-cols-5">
-            <div className="text-center">
-              <div className="mb-2 font-bold text-cyan-400 text-4xl">5</div>
-              <div className="text-blue-100 text-sm">Operating Companies</div>
+          <div className="gap-8 grid lg:grid-cols-4 text-center">
+            <div>
+              <div className="mb-2 font-bold text-4xl">19+</div>
+              <div className="text-blue-200">Years Experience</div>
             </div>
-            <div className="text-center">
-              <div className="mb-2 font-bold text-cyan-400 text-4xl">19+</div>
-              <div className="text-blue-100 text-sm">Years Experience</div>
+            <div>
+              <div className="mb-2 font-bold text-4xl">500+</div>
+              <div className="text-blue-200">Employees</div>
             </div>
-            <div className="text-center">
-              <div className="mb-2 font-bold text-cyan-400 text-4xl">500+</div>
-              <div className="text-blue-100 text-sm">Total Workforce</div>
+            <div>
+              <div className="mb-2 font-bold text-4xl">100+</div>
+              <div className="text-blue-200">Projects Completed</div>
             </div>
-            <div className="text-center">
-              <div className="mb-2 font-bold text-cyan-400 text-4xl">50+</div>
-              <div className="text-blue-100 text-sm">Hectares Facilities</div>
-            </div>
-            <div className="text-center">
-              <div className="mb-2 font-bold text-cyan-400 text-4xl">∞</div>
-              <div className="text-blue-100 text-sm">Sustainable Future</div>
+            <div>
+              <div className="mb-2 font-bold text-4xl">5</div>
+              <div className="text-blue-200">Company Portfolio</div>
             </div>
           </div>
         </div>
