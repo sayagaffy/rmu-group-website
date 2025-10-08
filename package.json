@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Official website for RMU Group - Advanced Mining Technology & Construction Services",
-  "keywords": ["mining", "technology", "construction", "MPAL", "ESG", "Indonesia"],
+  "keywords": [
+    "mining",
+    "technology",
+    "construction",
+    "MPAL",
+    "ESG",
+    "Indonesia"
+  ],
   "author": "RMU Group",
   "scripts": {
     "dev": "next dev",
@@ -23,6 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "recharts": "^3.2.1",
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {

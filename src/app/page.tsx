@@ -8,6 +8,9 @@ import Team from "@/components/sections/Team";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsappButton";
+import HeroSlider from '@/components/home/HeroSlider';
+import DataShowcase from '@/components/home/DataShowcase';
+import { homeContent } from '@/data/home';
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://rekayasamineralutama.com/"),
@@ -20,6 +23,18 @@ export default function Home() {
   return (
     <main className="bg-white min-h-screen">
       <Header />
+
+      {/* NEW: Hero Slider */}
+      <HeroSlider
+        slides={homeContent.hero.slides}
+        autoplay={homeContent.hero.autoplay}
+        interval={homeContent.hero.interval}
+      />
+
+      {/* NEW: Data Showcase with 4 Charts */}
+      <DataShowcase data={homeContent} />
+
+      {/* EXISTING: Keep all existing sections */}
       <Hero />
       <About />
       <Companies />
