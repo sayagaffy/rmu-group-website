@@ -10,6 +10,9 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsappButton";
 import HeroSlider from '@/components/home/HeroSlider';
 import DataShowcase from '@/components/home/DataShowcase';
+import MissionStatement from '@/components/home/MissionStatement';
+import ProcessingFlow from '@/components/home/ProcessingFlow';
+import TechnologyFeatures from '@/components/home/TechnologyFeatures';
 import { homeContent } from '@/data/home';
 
 export const metadata: Metadata = {
@@ -33,6 +36,18 @@ export default function Home() {
 
       {/* NEW: Data Showcase with 4 Charts */}
       <DataShowcase data={homeContent} />
+
+      {/* PHASE 2: Mission Statement */}
+      <MissionStatement
+        text={homeContent.mission.text}
+        background={homeContent.mission.background}
+      />
+
+      {/* PHASE 2: Processing Flow */}
+      <ProcessingFlow data={homeContent.nickelProcessing} />
+
+      {/* PHASE 2: Technology Features */}
+      <TechnologyFeatures data={homeContent.technology} />
 
       {/* EXISTING: Keep all existing sections */}
       <Hero />
