@@ -35,8 +35,8 @@ export interface HomeContent {
     };
     battery: {
       title: string;
-      current: { year: number; value: string };
-      projected: { year: number; value: string };
+      current: { year: string; value: string };
+      projected: { year: string; value: string };
       cagr: string;
       source: string;
     };
@@ -151,8 +151,8 @@ export const homeContent: HomeContent = {
     },
     battery: {
       title: 'EV Battery Market Size',
-      current: { year: 2023, value: '$60B' },
-      projected: { year: 2030, value: '$360B' },
+      current: { year: '2023', value: '$60B' },
+      projected: { year: '2030', value: '$360B' },
       cagr: '27%',
       source: 'McKinsey & Company, 2023'
     },
