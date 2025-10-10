@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +20,13 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Companies", href: "#companies" },
-    { name: "Technology", href: "#technology" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/", type: "route" },
+    { name: "Mining", href: "/mining", type: "route" },
+    { name: "Processing", href: "/processing", type: "route" },
+    { name: "ESG & Carbon", href: "/esg-carbon", type: "route" },
+    { name: "About", href: "#about", type: "anchor" },
+    { name: "Companies", href: "#companies", type: "anchor" },
+    { name: "Contact", href: "#contact", type: "anchor" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -34,6 +38,16 @@ const Header = () => {
       });
     }
     setIsMenuOpen(false);
+  };
+
+  const isActive = (item: { href: string; type: string }) => {
+    if (item.type === "route") {
+      if (item.href === "/") {
+        return pathname === "/";
+      }
+      return pathname.startsWith(item.href);
+    }
+    return false;
   };
 
   return (
@@ -48,8 +62,8 @@ const Header = () => {
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("#home")}
+            <Link
+              href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
               <div className="flex justify-center items-center bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg w-10 h-10">
@@ -71,24 +85,40 @@ const Header = () => {
                   Mining Technology Excellence
                 </p>
               </div>
-            </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className={`font-medium transition-colors hover:text-blue-600 ${
-                  isScrolled
-                    ? "text-gray-700"
-                    : "text-white hover:text-blue-200"
-                }`}
-              >
-                {item.name}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.type === "route" ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`font-medium transition-colors hover:text-blue-600 border-b-2 ${
+                    isActive(item)
+                      ? "border-blue-600 text-blue-600"
+                      : isScrolled
+                      ? "text-gray-700 border-transparent"
+                      : "text-white hover:text-blue-200 border-transparent"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`font-medium transition-colors hover:text-blue-600 ${
+                    isScrolled
+                      ? "text-gray-700"
+                      : "text-white hover:text-blue-200"
+                  }`}
+                >
+                  {item.name}
+                </button>
+              )
+            )}
           </nav>
 
           {/* Contact Info & CTA */}
@@ -136,15 +166,30 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-white shadow-lg border-gray-200 border-t">
             <div className="space-y-4 px-4 py-6">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block py-2 w-full font-medium text-gray-700 hover:text-blue-600 text-left transition-colors"
-                >
-                  {item.name}
-                </button>
-              ))}
+              {navItems.map((item) =>
+                item.type === "route" ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block py-2 w-full font-medium text-left transition-colors rounded-lg px-3 ${
+                      isActive(item)
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="block py-2 w-full font-medium text-gray-700 hover:text-blue-600 text-left transition-colors px-3 rounded-lg hover:bg-gray-50"
+                  >
+                    {item.name}
+                  </button>
+                )
+              )}
 
               <div className="pt-4 border-gray-200 border-t">
                 <div className="flex items-center gap-2 mb-3 text-gray-600">

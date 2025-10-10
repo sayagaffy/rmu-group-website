@@ -90,7 +90,7 @@ export const homeContent: HomeContent = {
     slides: [
       {
         id: 1,
-        image: '/images/home/hero-1.jpg',
+        image: '/images/home/hero-1.png',
         title: 'We Empower World Sustainable Energy',
         subtitle: 'with End-to-End Nickel Sovereignty Platform',
         cta: {
@@ -100,7 +100,7 @@ export const homeContent: HomeContent = {
       },
       {
         id: 2,
-        image: '/images/home/hero-2.jpg',
+        image: '/images/home/hero-2.png',
         title: 'Advanced Mining Technology',
         subtitle: 'Innovative MPAL Processing for EV Batteries',
         cta: {
@@ -110,12 +110,22 @@ export const homeContent: HomeContent = {
       },
       {
         id: 3,
-        image: '/images/home/hero-3.jpg',
+        image: '/images/home/hero-3.png',
         title: 'ESG Compliance & Carbon Credit',
         subtitle: 'Building a Sustainable Future',
         cta: {
           text: 'Sustainability',
           link: '/esg-carbon'
+        }
+      },
+      {
+        id: 4,
+        image: '/images/home/hero-4.png',
+        title: 'Indonesia\'s Nickel Resources',
+        subtitle: 'Powering the Global EV Revolution',
+        cta: {
+          text: 'Our Resources',
+          link: '/company'
         }
       }
     ],

@@ -2,17 +2,22 @@
 
 import React from "react";
 import { Globe, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Our Companies", href: "#companies" },
-    { name: "Technology", href: "#technology" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/", type: "route" },
+    { name: "About Us", href: "#about", type: "anchor" },
+    { name: "Our Companies", href: "#companies", type: "anchor" },
+    { name: "Contact", href: "#contact", type: "anchor" },
+  ];
+
+  const operationsLinks = [
+    { name: "Mining Operations", href: "/mining" },
+    { name: "Advanced Processing", href: "/processing" },
+    { name: "ESG & Carbon Credit", href: "/esg-carbon" },
   ];
 
   const companies = [
@@ -80,15 +85,43 @@ const Footer = () => {
           <div>
             <h4 className="mb-6 font-semibold text-lg">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
+              {quickLinks.map((link, index) =>
+                link.type === "route" ? (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+                    >
+                      <ArrowRight className="opacity-0 group-hover:opacity-100 w-4 h-4 transition-opacity" />
+                      <span>{link.name}</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={index}>
+                    <button
+                      onClick={() => scrollToSection(link.href)}
+                      className="group flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+                    >
+                      <ArrowRight className="opacity-0 group-hover:opacity-100 w-4 h-4 transition-opacity" />
+                      <span>{link.name}</span>
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
+
+            {/* Operations Links */}
+            <h4 className="mb-3 mt-8 font-semibold text-lg">Operations</h4>
+            <ul className="space-y-3">
+              {operationsLinks.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
+                  <Link
+                    href={link.href}
                     className="group flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
                   >
                     <ArrowRight className="opacity-0 group-hover:opacity-100 w-4 h-4 transition-opacity" />
                     <span>{link.name}</span>
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
