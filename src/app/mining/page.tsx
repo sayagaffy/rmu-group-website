@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { miningContent } from '@/data/mining';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/common/WhatsappButton';
 import MiningHero from '@/components/mining/MiningHero';
 import MiningIntro from '@/components/mining/MiningIntro';
 import StrategicRegions from '@/components/mining/StrategicRegions';
@@ -13,7 +16,9 @@ export const metadata: Metadata = {
 
 export default function MiningPage() {
   return (
-    <main className="min-h-screen">
+    <main className="bg-white min-h-screen">
+      <Header />
+
       <MiningHero
         title={miningContent.hero.title}
         subtitle={miningContent.hero.subtitle}
@@ -42,6 +47,9 @@ export default function MiningPage() {
         description={miningContent.sustainability.description}
         initiatives={miningContent.sustainability.initiatives}
       />
+
+      <Footer />
+      <WhatsAppButton />
     </main>
   );
 }

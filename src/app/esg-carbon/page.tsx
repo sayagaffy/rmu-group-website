@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { esgContent } from '@/data/esg';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/common/WhatsappButton';
 import ESGHero from '@/components/esg/ESGHero';
 import ESGPillars from '@/components/esg/ESGPillars';
 import CarbonCreditOpportunities from '@/components/esg/CarbonCreditOpportunities';
@@ -12,7 +15,9 @@ export const metadata: Metadata = {
 
 export default function ESGPage() {
   return (
-    <main className="min-h-screen">
+    <main className="bg-white min-h-screen">
+      <Header />
+
       <ESGHero
         title={esgContent.hero.title}
         subtitle={esgContent.hero.subtitle}
@@ -36,6 +41,9 @@ export default function ESGPage() {
         image={esgContent.vision.image}
         roadmap={esgContent.vision.roadmap}
       />
+
+      <Footer />
+      <WhatsAppButton />
     </main>
   );
 }

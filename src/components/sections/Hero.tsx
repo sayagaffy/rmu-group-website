@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Play,
   X,
@@ -147,10 +148,12 @@ const Hero = () => {
               <div className="relative bg-white/10 backdrop-blur-sm p-8 border border-white/20 rounded-3xl">
                 {/* Video Thumbnail */}
                 <div className="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl aspect-video overflow-hidden cursor-pointer">
-                  <img
+                  <Image
                     src="/images/rmu-video-thumbnail.jpg"
                     alt="RMU Group Overview Video"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
 
                   {/* Video Overlay */}

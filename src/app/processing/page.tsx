@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { processingContent } from '@/data/processing';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/common/WhatsappButton';
 import ProcessingHero from '@/components/processing/ProcessingHero';
 import MPALTechnology from '@/components/processing/MPALTechnology';
 import TechnologyFeatures from '@/components/processing/TechnologyFeatures';
@@ -13,7 +16,9 @@ export const metadata: Metadata = {
 
 export default function ProcessingPage() {
   return (
-    <main className="min-h-screen">
+    <main className="bg-white min-h-screen">
+      <Header />
+
       <ProcessingHero
         title={processingContent.hero.title}
         subtitle={processingContent.hero.subtitle}
@@ -43,6 +48,9 @@ export default function ProcessingPage() {
         description={processingContent.products.description}
         items={processingContent.products.items}
       />
+
+      <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
