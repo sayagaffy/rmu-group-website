@@ -17,6 +17,9 @@ import {
   Phone,
   Mail,
   Factory,
+  Droplets,
+  Fuel,
+  HardHat,
 } from "lucide-react";
 
 // TypeScript interfaces
@@ -226,6 +229,90 @@ const Companies: React.FC = () => {
       ],
       gradient: "from-orange-600 to-red-700",
     },
+    {
+      id: "bls",
+      name: "PT Bumi Lautan Samudera",
+      tagline: "Marine Sediment Treatment & Sea Sand Quarry",
+      type: "Marine Operations",
+      description:
+        "Specialized in marine sediment treatment and sea sand quarry operations with sustainable environmental practices. Committed to responsible marine resource management while maintaining ecological balance in coastal waters.",
+      services: [
+        "Marine Sediment Treatment",
+        "Sea Sand Quarry Operations",
+        "Environmental Restoration",
+        "Marine Equipment Operations",
+        "Sustainable Resource Extraction",
+        "Coastal Development Support",
+      ],
+      icon: <Droplets className="w-12 h-12" />,
+      location: "Indonesia",
+      email: "info@bumilautansamudera.co.id",
+      phone: "+62 21 [Contact for Details]",
+      established: "2020",
+      highlights: [
+        "Marine Sediment Expertise",
+        "Sustainable Quarry Operations",
+        "Environmental Compliance",
+        "Modern Equipment Fleet",
+      ],
+      gradient: "from-teal-600 to-cyan-700",
+    },
+    {
+      id: "pog",
+      name: "PT Prosympac Oil and Gas",
+      tagline: "Trusted National Construction Company",
+      type: "Oil & Gas Construction",
+      description:
+        "Trusted national construction company specializing in oil and gas industry projects with proven track record. Delivering comprehensive EPC services for complex industrial facilities with focus on safety and quality excellence.",
+      services: [
+        "Oil & Gas Construction",
+        "EPC Services",
+        "Industrial Projects",
+        "Pipeline Construction",
+        "Facility Maintenance",
+        "Project Engineering",
+      ],
+      icon: <Fuel className="w-12 h-12" />,
+      location: "Indonesia",
+      email: "info@prosympac.co.id",
+      phone: "+62 21 [Contact for Details]",
+      established: "2015",
+      highlights: [
+        "Oil & Gas Sector Expertise",
+        "Trusted National Contractor",
+        "EPC Project Experience",
+        "Safety-First Culture",
+      ],
+      gradient: "from-amber-600 to-orange-700",
+    },
+    {
+      id: "spk",
+      name: "PT Saba Prima Konstruksi",
+      tagline: "Superior, Innovative, Quality-Oriented Construction",
+      type: "Construction Services",
+      description:
+        "Superior, innovative, and quality-oriented construction company delivering excellence in building and infrastructure projects. Combining modern construction techniques with proven project management methodologies for outstanding results.",
+      services: [
+        "General Construction",
+        "Infrastructure Development",
+        "Building Services",
+        "Project Management",
+        "Quality Assurance",
+        "Construction Consultation",
+      ],
+      icon: <HardHat className="w-12 h-12" />,
+      location: "Indonesia",
+      email: "info@sabaprima.co.id",
+      phone: "+62 21 [Contact for Details]",
+      established: "2018",
+      highlights: [
+        "Quality-Focused Approach",
+        "Innovative Construction Methods",
+        "Superior Service Delivery",
+        "Modern Project Management",
+      ],
+      gradient: "from-slate-600 to-gray-800",
+    },
   ];
 
   const subsidiaries: Subsidiary[] = [
@@ -259,9 +346,9 @@ const Companies: React.FC = () => {
             </span>
           </h2>
           <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
-            Five specialized companies working together to deliver comprehensive
+            Eight specialized companies working together to deliver comprehensive
             solutions across mining technology, maritime transportation,
-            advanced manufacturing, marine operations, and construction services
+            advanced manufacturing, marine operations, oil & gas, and construction services
           </p>
         </div>
 
@@ -509,7 +596,7 @@ const Companies: React.FC = () => {
               <div className="text-blue-200">Projects Completed</div>
             </div>
             <div>
-              <div className="mb-2 font-bold text-4xl">5</div>
+              <div className="mb-2 font-bold text-4xl">8</div>
               <div className="text-blue-200">Company Portfolio</div>
             </div>
           </div>

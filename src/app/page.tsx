@@ -1,10 +1,8 @@
 import { Metadata } from "next";
 import Header from "@/components/layout/Header";
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
+// import About from "@/components/sections/About"; // Will move to /company page
 import Companies from "@/components/sections/Companies";
-import Technology from "@/components/sections/Technology";
-import Team from "@/components/sections/Team";
+// import Team from "@/components/sections/Team"; // Will move to /company page
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsappButton";
@@ -49,13 +47,18 @@ export default function Home() {
       {/* PHASE 2: Technology Features */}
       <TechnologyFeatures data={homeContent.technology} />
 
-      {/* EXISTING: Keep all existing sections */}
-      <Hero />
-      <About />
+      {/* About - Will move to /company page */}
+      {/* <About /> */}
+
+      {/* Companies Section - Will update to 8 companies */}
       <Companies />
-      <Technology />
-      <Team />
+
+      {/* Team - Will move to /company page */}
+      {/* <Team /> */}
+
+      {/* Contact Section */}
       <Contact />
+
       <Footer />
       <WhatsAppButton />
     </main>
