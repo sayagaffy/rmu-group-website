@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,8 +25,7 @@ const Header = () => {
     { name: "Mining", href: "/mining", type: "route" },
     { name: "Processing", href: "/processing", type: "route" },
     { name: "ESG & Carbon", href: "/esg-carbon", type: "route" },
-    { name: "About", href: "#about", type: "anchor" },
-    { name: "Companies", href: "#companies", type: "anchor" },
+    { name: "Company", href: "/company", type: "route" },
     { name: "Contact", href: "#contact", type: "anchor" },
   ];
 
@@ -66,25 +66,13 @@ const Header = () => {
               href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              <div className="flex justify-center items-center bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg w-10 h-10">
-                <span className="font-bold text-white text-xl">R</span>
-              </div>
-              <div>
-                <h1
-                  className={`text-2xl font-heading font-bold transition-colors ${
-                    isScrolled ? "text-gray-900" : "text-white"
-                  }`}
-                >
-                  RMU Group
-                </h1>
-                <p
-                  className={`text-xs transition-colors ${
-                    isScrolled ? "text-gray-600" : "text-blue-100"
-                  }`}
-                >
-                  Mining Technology Excellence
-                </p>
-              </div>
+              <Image
+                src="/logo-rmu.png" // Path ke logo di folder public
+                alt="RMU Group Logo" // Teks alternatif untuk aksesibilitas
+                width={120} // Sesuaikan lebar logo
+                height={67} // Sesuaikan tinggi logo
+                className="rounded-lg" // Tambahkan styling jika perlu
+              />
             </Link>
           </div>
 
@@ -95,12 +83,12 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-blue-600 border-b-2 ${
+                  className={`font-medium transition-colors hover:text-primary-500 border-b-2 ${
                     isActive(item)
-                      ? "border-blue-600 text-blue-600"
+                      ? "border-primary-500 text-primary-500"
                       : isScrolled
                       ? "text-gray-700 border-transparent"
-                      : "text-white hover:text-blue-200 border-transparent"
+                      : "text-white hover:text-primary-200 border-transparent"
                   }`}
                 >
                   {item.name}
@@ -109,10 +97,10 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`font-medium transition-colors hover:text-blue-600 ${
+                  className={`font-medium transition-colors hover:text-primary-500 ${
                     isScrolled
                       ? "text-gray-700"
-                      : "text-white hover:text-blue-200"
+                      : "text-white hover:text-primary-200"
                   }`}
                 >
                   {item.name}
@@ -125,7 +113,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <div
               className={`text-sm ${
-                isScrolled ? "text-gray-600" : "text-blue-100"
+                isScrolled ? "text-gray-600" : "text-primary-100"
               }`}
             >
               <div className="flex items-center gap-1">
@@ -135,7 +123,7 @@ const Header = () => {
             </div>
             <button
               onClick={() => scrollToSection("#contact")}
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium text-white transition-colors"
+              className="bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded-lg font-medium text-white transition-colors"
             >
               Contact Us
             </button>
@@ -174,8 +162,8 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className={`block py-2 w-full font-medium text-left transition-colors rounded-lg px-3 ${
                       isActive(item)
-                        ? "text-blue-600 bg-blue-50"
-                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                        ? "text-primary-500 bg-primary-50"
+                        : "text-gray-700 hover:text-primary-500 hover:bg-gray-50"
                     }`}
                   >
                     {item.name}
@@ -184,7 +172,7 @@ const Header = () => {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="block py-2 w-full font-medium text-gray-700 hover:text-blue-600 text-left transition-colors px-3 rounded-lg hover:bg-gray-50"
+                    className="block hover:bg-gray-50 px-3 py-2 rounded-lg w-full font-medium text-gray-700 hover:text-primary-500 text-left transition-colors"
                   >
                     {item.name}
                   </button>
@@ -202,7 +190,7 @@ const Header = () => {
                 </div>
                 <button
                   onClick={() => scrollToSection("#contact")}
-                  className="bg-blue-600 hover:bg-blue-700 py-3 rounded-lg w-full font-medium text-white transition-colors"
+                  className="bg-primary-500 hover:bg-primary-600 py-3 rounded-lg w-full font-medium text-white transition-colors"
                 >
                   Contact Us
                 </button>

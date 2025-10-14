@@ -92,7 +92,7 @@ const Companies: React.FC = () => {
         "ESG-Based Solutions",
         "Energy Transition Metals",
       ],
-      gradient: "from-blue-600 to-blue-800",
+      gradient: "from-primary-500 to-primary-700",
     },
     {
       id: "pt-bnp",
@@ -121,7 +121,7 @@ const Companies: React.FC = () => {
         "Multi-Port Operations",
         "Safety First Approach",
       ],
-      gradient: "from-blue-600 to-cyan-700",
+      gradient: "from-primary-500 to-cyan-700",
     },
     {
       id: "pt-prn",
@@ -198,7 +198,7 @@ const Companies: React.FC = () => {
         "Sustainable Operations",
         "70% Group Ownership",
       ],
-      gradient: "from-cyan-600 to-blue-700",
+      gradient: "from-cyan-600 to-primary-600",
     },
     {
       id: "kembar",
@@ -335,13 +335,13 @@ const Companies: React.FC = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary-100 mb-4 px-4 py-2 rounded-full font-medium text-primary-700 text-sm">
             <Building className="w-4 h-4" />
             Our Companies
           </div>
           <h2 className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl">
             Integrated Portfolio of{" "}
-            <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 text-gradient text-transparent">
+            <span className="bg-clip-text bg-gradient-to-r from-primary-500 to-cyan-600 text-gradient text-transparent">
               Excellence
             </span>
           </h2>
@@ -395,28 +395,28 @@ const Companies: React.FC = () => {
                 {/* Key Information Grid */}
                 <div className="gap-4 grid grid-cols-1 sm:grid-cols-2">
                   <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="w-5 h-5 text-blue-600" />
+                    <MapPin className="w-5 h-5 text-primary-500" />
                     <span className="text-sm">{company.location}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
-                    <Calendar className="w-5 h-5 text-blue-600" />
+                    <Calendar className="w-5 h-5 text-primary-500" />
                     <span className="text-sm">Est. {company.established}</span>
                   </div>
                   {company.totalEmployees && (
                     <div className="flex items-center gap-2 text-gray-600">
-                      <Users className="w-5 h-5 text-blue-600" />
+                      <Users className="w-5 h-5 text-primary-500" />
                       <span className="text-sm">{company.totalEmployees}</span>
                     </div>
                   )}
                   {company.assets && (
                     <div className="flex items-center gap-2 text-gray-600">
-                      <DollarSign className="w-5 h-5 text-blue-600" />
+                      <DollarSign className="w-5 h-5 text-primary-500" />
                       <span className="text-sm">{company.assets}</span>
                     </div>
                   )}
                   {company.landArea && (
                     <div className="flex items-center gap-2 text-gray-600">
-                      <Globe className="w-5 h-5 text-blue-600" />
+                      <Globe className="w-5 h-5 text-primary-500" />
                       <span className="text-sm">{company.landArea}</span>
                     </div>
                   )}
@@ -453,15 +453,15 @@ const Companies: React.FC = () => {
 
                 {/* Major Clients (if available) */}
                 {company.majorClients && (
-                  <div className="bg-blue-50 p-4 rounded-xl">
-                    <h4 className="mb-2 font-semibold text-blue-800">
+                  <div className="bg-primary-50 p-4 rounded-xl">
+                    <h4 className="mb-2 font-semibold text-primary-700">
                       Major Clients
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {company.majorClients.map((client: string, clientIndex: number) => (
                         <span
                           key={clientIndex}
-                          className="bg-blue-100 px-2 py-1 rounded font-medium text-blue-700 text-xs"
+                          className="bg-primary-100 px-2 py-1 rounded font-medium text-primary-600 text-xs"
                         >
                           {client}
                         </span>
@@ -548,7 +548,7 @@ const Companies: React.FC = () => {
         </div>
 
         {/* Subsidiaries Section */}
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 lg:p-12 rounded-3xl">
+        <div className="bg-gradient-to-br from-primary-50 to-cyan-50 p-8 lg:p-12 rounded-3xl">
           <div className="mb-8 text-center">
             <h3 className="mb-4 font-heading font-bold text-gray-900 text-3xl">
               Additional Subsidiaries
@@ -565,7 +565,7 @@ const Companies: React.FC = () => {
                 className="bg-white hover:shadow-lg p-6 rounded-xl transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 px-3 py-1 rounded-full font-medium text-blue-600 text-sm">
+                  <div className="bg-primary-100 px-3 py-1 rounded-full font-medium text-primary-500 text-sm">
                     {subsidiary.type}
                   </div>
                 </div>
@@ -585,19 +585,19 @@ const Companies: React.FC = () => {
           <div className="gap-8 grid lg:grid-cols-4 text-center">
             <div>
               <div className="mb-2 font-bold text-4xl">19+</div>
-              <div className="text-blue-200">Years Experience</div>
+              <div className="text-primary-200">Years Experience</div>
             </div>
             <div>
               <div className="mb-2 font-bold text-4xl">500+</div>
-              <div className="text-blue-200">Employees</div>
+              <div className="text-primary-200">Employees</div>
             </div>
             <div>
               <div className="mb-2 font-bold text-4xl">100+</div>
-              <div className="text-blue-200">Projects Completed</div>
+              <div className="text-primary-200">Projects Completed</div>
             </div>
             <div>
               <div className="mb-2 font-bold text-4xl">8</div>
-              <div className="text-blue-200">Company Portfolio</div>
+              <div className="text-primary-200">Company Portfolio</div>
             </div>
           </div>
         </div>

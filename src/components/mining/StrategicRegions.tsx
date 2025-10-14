@@ -31,7 +31,7 @@ export default function StrategicRegions({ title, description, regions }: Strate
               key={index}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
             >
-              <MapPin className="w-12 h-12 text-blue-600 mb-4" />
+              <MapPin className="w-12 h-12 text-primary-500 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">{region.name}</h3>
               <p className="text-sm text-gray-500 mb-3">{region.location}</p>
               <div className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">

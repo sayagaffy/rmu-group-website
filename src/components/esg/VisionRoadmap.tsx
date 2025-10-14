@@ -24,7 +24,7 @@ export default function VisionRoadmap({ title, description, image, roadmap }: Vi
         </div>
 
         {/* Roadmap */}
-        <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 md:p-12">
+        <div className="bg-gradient-to-br from-primary-50 to-green-50 rounded-2xl p-8 md:p-12">
           <div className="flex items-center justify-center mb-8">
             <Target className="w-12 h-12 text-green-600 mr-3" />
             <h3 className="text-2xl font-bold text-gray-900">

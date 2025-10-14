@@ -3,6 +3,7 @@
 import React from "react";
 import { Globe, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,6 +27,9 @@ const Footer = () => {
     "PT Perkakas Rekadaya Nusantara",
     "PT Gemilang Kharisma",
     "PT Kembar Jaya Abadi",
+    "PT Bumi Lautan Samudera",
+    "PT Prosympac Oil and Gas",
+    "PT Saba Prima Konstruksi",
   ];
 
   const services = [
@@ -58,17 +62,13 @@ const Footer = () => {
         <div className="gap-8 grid lg:grid-cols-4">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex justify-center items-center bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg w-10 h-10">
-                <span className="font-bold text-white text-xl">R</span>
-              </div>
-              <div>
-                <h3 className="font-heading font-bold text-2xl">RMU Group</h3>
-                <p className="text-gray-400 text-sm">
-                  Integrated Industrial Excellence
-                </p>
-              </div>
-            </div>
+            <Image
+              src="/logo-rmu.png" // Path ke logo di folder public
+              alt="RMU Group Logo" // Teks alternatif untuk aksesibilitas
+              width={140} // Sesuaikan lebar logo
+              height={78} // Sesuaikan tinggi logo
+              className="rounded-lg" // Tambahkan styling jika perlu
+            />
             <p className="mb-6 text-gray-300 leading-relaxed">
               Leading provider of advanced mining technology, maritime
               transportation, manufacturing excellence, marine operations, and
@@ -111,7 +111,7 @@ const Footer = () => {
             </ul>
 
             {/* Operations Links */}
-            <h4 className="mb-3 mt-8 font-semibold text-lg">Operations</h4>
+            <h4 className="mt-8 mb-3 font-semibold text-lg">Operations</h4>
             <ul className="space-y-3">
               {operationsLinks.map((link, index) => (
                 <li key={index}>
@@ -137,8 +137,8 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 mt-6 px-4 py-2 rounded-lg text-white text-center">
-              <div className="font-bold text-lg">5</div>
+            <div className="bg-gradient-to-r from-primary-500 to-cyan-600 mt-6 px-4 py-2 rounded-lg text-white text-center">
+              <div className="font-bold text-lg">8</div>
               <div className="text-xs">Integrated Companies</div>
             </div>
           </div>

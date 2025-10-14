@@ -12,7 +12,7 @@ export default function ProcessingHero({ title, subtitle, image }: ProcessingHer
   return (
     <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center">
       {/* Background - temporary gradient if image not available */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-blue-700">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-primary-600">
         {/* Uncomment when image available:
         <Image
           src={image}

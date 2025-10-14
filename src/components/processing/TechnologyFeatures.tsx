@@ -40,7 +40,7 @@ export default function TechnologyFeatures({ title, items }: TechnologyFeaturesP
                 className="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Icon className="w-12 h-12 text-blue-600" />
+                  <Icon className="w-12 h-12 text-primary-500" />
                   <span className="text-4xl font-bold text-gray-200">{item.number}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">

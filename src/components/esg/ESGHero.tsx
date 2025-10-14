@@ -12,7 +12,7 @@ export default function ESGHero({ title, subtitle, image }: ESGHeroProps) {
   return (
     <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center">
       {/* Background - temporary gradient if image not available */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-green-800 to-blue-800">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-green-800 to-primary-700">
         {/* Uncomment when image available:
         <Image
           src={image}

@@ -24,7 +24,7 @@ const Contact = () => {
       email: "info@rekayasamineralutama.com",
       hours: "Mon - Fri: 8:00 AM - 5:00 PM",
       icon: <Building className="w-8 h-8" />,
-      gradient: "from-blue-600 to-blue-800",
+      gradient: "from-primary-500 to-primary-700",
     },
     {
       type: "Laboratory",
@@ -63,7 +63,7 @@ const Contact = () => {
       email: "gemilangkharisma1@gmail.com",
       hours: "Mon - Fri: 8:00 AM - 5:00 PM",
       icon: <Building className="w-8 h-8" />,
-      gradient: "from-cyan-600 to-blue-700",
+      gradient: "from-cyan-600 to-primary-600",
     },
     {
       type: "Construction Office",
@@ -109,12 +109,12 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-gradient-to-br from-gray-50 to-blue-50 section-padding"
+      className="bg-gradient-to-br from-gray-50 to-primary-50 section-padding"
     >
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary-100 mb-4 px-4 py-2 rounded-full font-medium text-primary-700 text-sm">
             <MessageCircle className="w-4 h-4" />
             Contact Us
           </div>
@@ -128,18 +128,18 @@ const Contact = () => {
         </div>
 
         {/* Quick Contact CTA */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-800 mb-16 p-8 lg:p-12 rounded-3xl text-white">
+        <div className="bg-gradient-to-br from-primary-500 to-primary-700 mb-16 p-8 lg:p-12 rounded-3xl text-white">
           <div className="items-center gap-8 grid lg:grid-cols-2">
             <div>
               <h3 className="mb-4 font-heading font-bold text-3xl">
                 Get Started Today
               </h3>
-              <p className="mb-6 text-blue-100 text-lg">
+              <p className="mb-6 text-primary-100 text-lg">
                 Whether you need mining technology consultation, construction
                 services, or marine operations support, we&apos;re ready to
                 help.
               </p>
-              <div className="space-y-3 text-blue-100">
+              <div className="space-y-3 text-primary-100">
                 {services.map((service, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <div className="bg-yellow-400 rounded-full w-2 h-2"></div>
@@ -152,7 +152,7 @@ const Contact = () => {
             <div className="text-center lg:text-right">
               <div className="bg-white/10 backdrop-blur-sm mb-6 p-6 rounded-2xl">
                 <h4 className="mb-4 font-bold text-xl">Quick Contact</h4>
-                <div className="space-y-3 text-blue-100">
+                <div className="space-y-3 text-primary-100">
                   <div className="flex justify-center lg:justify-end items-center gap-2">
                     <Phone className="w-5 h-5" />
                     <span>+62 21 22761331</span>
@@ -291,8 +291,8 @@ const Contact = () => {
 
             <div className="gap-6 grid md:grid-cols-3 mb-8">
               <div className="text-center">
-                <div className="flex justify-center items-center bg-blue-100 mx-auto mb-3 rounded-full w-16 h-16">
-                  <Phone className="w-8 h-8 text-blue-600" />
+                <div className="flex justify-center items-center bg-primary-100 mx-auto mb-3 rounded-full w-16 h-16">
+                  <Phone className="w-8 h-8 text-primary-500" />
                 </div>
                 <h4 className="mb-1 font-semibold text-gray-900">Call Us</h4>
                 <p className="text-gray-600 text-sm">
@@ -323,7 +323,7 @@ const Contact = () => {
 
             <button
               onClick={() => openWhatsApp("+6282122761331", "RMU Group")}
-              className="flex justify-center items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-800 hover:shadow-lg mx-auto px-8 py-4 rounded-lg font-semibold text-white transition-shadow"
+              className="flex justify-center items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 hover:shadow-lg mx-auto px-8 py-4 rounded-lg font-semibold text-white transition-shadow"
             >
               <MessageCircle className="w-5 h-5" />
               Start Conversation Now

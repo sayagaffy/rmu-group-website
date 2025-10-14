@@ -49,7 +49,7 @@ const About = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary-100 mb-4 px-4 py-2 rounded-full font-medium text-primary-700 text-sm">
             <Target className="w-4 h-4" />
             About RMU Group
           </div>
@@ -70,7 +70,7 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <Eye className="w-8 h-8 text-blue-600" />
+                <Eye className="w-8 h-8 text-primary-500" />
                 <h3 className="font-heading font-bold text-gray-900 text-3xl">
                   Our Vision
                 </h3>
@@ -89,7 +89,7 @@ const About = () => {
                     key={index}
                     className="flex gap-4 bg-white shadow-sm hover:shadow-md p-4 rounded-xl transition-shadow"
                   >
-                    <div className="mt-1 text-blue-600">{point.icon}</div>
+                    <div className="mt-1 text-primary-500">{point.icon}</div>
                     <div>
                       <h4 className="mb-1 font-semibold text-gray-900">
                         {point.title}
@@ -108,7 +108,7 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <Target className="w-8 h-8 text-blue-600" />
+                <Target className="w-8 h-8 text-primary-500" />
                 <h3 className="font-heading font-bold text-gray-900 text-3xl">
                   Our Mission
                 </h3>
@@ -128,11 +128,11 @@ const About = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl text-white">
+            <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-8 rounded-2xl text-white">
               <h4 className="mb-4 font-heading font-bold text-2xl">
                 Ready to Transform Your Mining Operations?
               </h4>
-              <p className="mb-6 text-blue-100">
+              <p className="mb-6 text-primary-100">
                 Discover how our MPAL technology can revolutionize your mineral
                 processing while maintaining the highest environmental
                 standards.
@@ -158,7 +158,7 @@ const About = () => {
           <div className="gap-8 grid grid-cols-2 lg:grid-cols-4">
             {achievements.map((achievement, index) => (
               <div key={index} className="group text-center">
-                <div className="mb-2 font-bold text-blue-600 text-4xl lg:text-5xl group-hover:scale-110 transition-transform">
+                <div className="mb-2 font-bold text-primary-500 text-4xl lg:text-5xl group-hover:scale-110 transition-transform">
                   {achievement.number}
                 </div>
                 <div className="font-medium text-gray-600">
@@ -183,8 +183,8 @@ const About = () => {
 
           <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-3">
             <div className="bg-white shadow-lg hover:shadow-xl p-8 rounded-2xl text-center transition-shadow">
-              <div className="flex justify-center items-center bg-blue-100 mx-auto mb-4 rounded-full w-16 h-16">
-                <Lightbulb className="w-8 h-8 text-blue-600" />
+              <div className="flex justify-center items-center bg-primary-100 mx-auto mb-4 rounded-full w-16 h-16">
+                <Lightbulb className="w-8 h-8 text-primary-500" />
               </div>
               <h4 className="mb-3 font-semibold text-gray-900 text-xl">
                 Innovation Leadership
@@ -263,12 +263,12 @@ const About = () => {
         </div>
 
         {/* Company Timeline */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-800 mt-20 p-8 lg:p-12 rounded-3xl text-white">
+        <div className="bg-gradient-to-br from-primary-500 to-primary-700 mt-20 p-8 lg:p-12 rounded-3xl text-white">
           <div className="mb-12 text-center">
             <h3 className="mb-4 font-heading font-bold text-3xl">
               Our Journey
             </h3>
-            <p className="mx-auto max-w-2xl text-blue-100 text-lg">
+            <p className="mx-auto max-w-2xl text-primary-100 text-lg">
               From innovative research to industry leadership - the RMU Group
               evolution
             </p>
@@ -280,7 +280,7 @@ const About = () => {
                 <span className="font-bold text-2xl">1994</span>
               </div>
               <h4 className="mb-2 font-bold">Foundation</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-primary-100 text-sm">
                 PT Kembar Jaya Abadi established, beginning our construction
                 excellence journey
               </p>
@@ -291,7 +291,7 @@ const About = () => {
                 <span className="font-bold text-2xl">2006</span>
               </div>
               <h4 className="mb-2 font-bold">Technology Innovation</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-primary-100 text-sm">
                 RMU founded with focus on revolutionary MPAL technology
                 development
               </p>
@@ -302,7 +302,7 @@ const About = () => {
                 <span className="font-bold text-2xl">2020</span>
               </div>
               <h4 className="mb-2 font-bold">Marine Expansion</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-primary-100 text-sm">
                 PT Gemilang Kharisma operational, expanding into sustainable
                 marine operations
               </p>
@@ -313,7 +313,7 @@ const About = () => {
                 <span className="font-bold text-2xl">2025</span>
               </div>
               <h4 className="mb-2 font-bold">Future Vision</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-primary-100 text-sm">
                 Integrated group leadership in sustainable mining and
                 construction excellence
               </p>
@@ -323,7 +323,7 @@ const About = () => {
           <div className="mt-12 text-center">
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl">
               <h4 className="mb-4 font-bold text-xl">Looking Ahead</h4>
-              <p className="mx-auto max-w-3xl text-blue-100 leading-relaxed">
+              <p className="mx-auto max-w-3xl text-primary-100 leading-relaxed">
                 As Indonesia moves towards its energy transition goals, RMU
                 Group stands ready to lead the transformation with our
                 integrated portfolio of sustainable mining technology,

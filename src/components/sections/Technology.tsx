@@ -127,12 +127,12 @@ const Technology = () => {
   return (
     <section
       id="technology"
-      className="bg-gradient-to-br from-gray-50 to-blue-50 section-padding"
+      className="bg-gradient-to-br from-gray-50 to-primary-50 section-padding"
     >
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary-100 mb-4 px-4 py-2 rounded-full font-medium text-primary-700 text-sm">
             <Cog className="w-4 h-4" />
             Our Technology
           </div>
@@ -160,9 +160,9 @@ const Technology = () => {
                 Metals from various mineral sources.
               </p>
 
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-2xl text-white">
+              <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-6 rounded-2xl text-white">
                 <h4 className="mb-3 font-bold text-xl">Key Innovation</h4>
-                <p className="text-blue-100">
+                <p className="text-primary-100">
                   Our patented spiral tube reactor system represents a
                   compromise between process conditions, plant equipment design,
                   and production capacity, resulting in optimal efficiency and
@@ -175,9 +175,9 @@ const Technology = () => {
               {mpalFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-blue-50 to-cyan-50 hover:shadow-lg p-6 rounded-xl transition-shadow"
+                  className="bg-gradient-to-br from-primary-50 to-cyan-50 hover:shadow-lg p-6 rounded-xl transition-shadow"
                 >
-                  <div className="mb-4 text-blue-600">{feature.icon}</div>
+                  <div className="mb-4 text-primary-500">{feature.icon}</div>
                   <h4 className="mb-2 font-bold text-gray-900">
                     {feature.title}
                   </h4>
@@ -197,7 +197,7 @@ const Technology = () => {
               key={index}
               className="bg-white shadow-lg hover:shadow-xl rounded-2xl overflow-hidden transition-shadow"
             >
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-white">
+              <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-6 text-white">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-white/20 p-3 rounded-xl">
                     {facility.icon}
@@ -208,7 +208,7 @@ const Technology = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <MapPin className="flex-shrink-0 mt-1 w-5 h-5" />
-                  <p className="text-blue-100 text-sm">{facility.location}</p>
+                  <p className="text-primary-100 text-sm">{facility.location}</p>
                 </div>
               </div>
 
@@ -225,7 +225,7 @@ const Technology = () => {
                         key={featureIndex}
                         className="flex items-center gap-2"
                       >
-                        <div className="bg-blue-600 rounded-full w-2 h-2"></div>
+                        <div className="bg-primary-500 rounded-full w-2 h-2"></div>
                         <span className="text-gray-600 text-sm">{feature}</span>
                       </div>
                     ))}
@@ -256,7 +256,7 @@ const Technology = () => {
             {esgDimensions.map((dimension, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-green-50 to-blue-50 hover:shadow-md p-6 rounded-xl transition-shadow"
+                className="bg-gradient-to-br from-green-50 to-primary-50 hover:shadow-md p-6 rounded-xl transition-shadow"
               >
                 <h4 className="mb-2 font-bold text-gray-900">
                   {dimension.name}

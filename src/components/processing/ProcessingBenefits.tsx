@@ -23,7 +23,7 @@ export default function ProcessingBenefits({ title, environmental, economic, tec
 
   const colorMap: { [key: string]: string } = {
     green: 'text-green-600 bg-green-100',
-    blue: 'text-blue-600 bg-blue-100',
+    blue: 'text-primary-500 bg-primary-100',
     purple: 'text-purple-600 bg-purple-100',
   };
 

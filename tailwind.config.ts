@@ -14,16 +14,16 @@ module.exports = {
       },
       colors: {
         primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          50: "#f0f7f9",   // Very light teal
+          100: "#d9ebf1",  // Light teal
+          200: "#b3d7e3",  // Lighter teal
+          300: "#8cc3d5",  // Light-medium teal
+          400: "#66afc7",  // Medium teal
+          500: "#2f5c76",  // Main brand color (from header)
+          600: "#284d62",  // Darker teal
+          700: "#213e4e",  // Dark teal
+          800: "#1a2f3a",  // Very dark teal
+          900: "#132026",  // Darkest teal
         },
         secondary: {
           50: "#fdf8f6",

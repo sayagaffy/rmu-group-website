@@ -19,7 +19,7 @@ const colorClasses: { [key: string]: string } = {
   green: 'bg-gradient-to-br from-green-500 to-green-600',
   teal: 'bg-gradient-to-br from-teal-500 to-teal-600',
   cyan: 'bg-gradient-to-br from-cyan-500 to-cyan-600',
-  blue: 'bg-gradient-to-br from-blue-500 to-blue-600',
+  blue: 'bg-gradient-to-br from-primary-400 to-primary-500',
 };
 
 const featureIcons = {

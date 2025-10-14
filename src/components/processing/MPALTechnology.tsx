@@ -32,7 +32,7 @@ export default function MPALTechnology({ title, description, process }: MPALTech
             {process.map((step) => (
               <div key={step.step} className="relative flex items-start">
                 {/* Number badge */}
-                <div className="absolute left-0 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg z-10">
+                <div className="absolute left-0 w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center shadow-lg z-10">
                   <span className="text-2xl font-bold text-white">{step.step}</span>
                 </div>
 

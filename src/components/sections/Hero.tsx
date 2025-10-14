@@ -50,13 +50,13 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 pt-20 md:pt-0 min-h-screen overflow-hidden"
+        className="relative flex items-center bg-gradient-to-br from-blue-900 via-primary-700 to-gray-900 pt-20 md:pt-0 min-h-screen overflow-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/hero-pattern.svg')] opacity-10"></div>
           <div className="top-20 right-20 absolute bg-cyan-500 opacity-20 blur-xl rounded-full w-72 h-72 animate-blob mix-blend-multiply filter"></div>
-          <div className="top-40 left-20 absolute bg-blue-500 opacity-20 blur-xl rounded-full w-72 h-72 animate-blob animation-delay-2000 mix-blend-multiply filter"></div>
+          <div className="top-40 left-20 absolute bg-primary-400 opacity-20 blur-xl rounded-full w-72 h-72 animate-blob animation-delay-2000 mix-blend-multiply filter"></div>
           <div className="bottom-20 left-1/2 absolute bg-purple-500 opacity-20 blur-xl rounded-full w-72 h-72 animate-blob animation-delay-4000 mix-blend-multiply filter"></div>
         </div>
 
@@ -77,7 +77,7 @@ const Hero = () => {
                   </span>
                 </h1>
 
-                <p className="max-w-2xl text-blue-100 text-lg sm:text-xl lg:text-2xl leading-relaxed">
+                <p className="max-w-2xl text-primary-100 text-lg sm:text-xl lg:text-2xl leading-relaxed">
                   Advanced Mining Technology, Maritime Transportation,
                   Manufacturing Excellence, Marine Operations & Construction
                   Services
@@ -105,7 +105,7 @@ const Hero = () => {
               <div className="flex sm:flex-row flex-col gap-4">
                 <button
                   onClick={() => scrollToSection("companies")}
-                  className="group flex justify-center items-center gap-3 bg-gradient-to-r from-cyan-500 hover:from-cyan-600 to-blue-600 hover:to-blue-700 shadow-xl hover:shadow-2xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-white text-base sm:text-lg transition-all duration-300"
+                  className="group flex justify-center items-center gap-3 bg-gradient-to-r from-cyan-500 hover:from-cyan-600 to-primary-500 hover:to-primary-600 shadow-xl hover:shadow-2xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-white text-base sm:text-lg transition-all duration-300"
                   style={{ touchAction: "manipulation" }}
                 >
                   <span>Explore Our Companies</span>
@@ -135,7 +135,7 @@ const Hero = () => {
                     <div className="mb-1 font-bold text-2xl lg:text-3xl">
                       {achievement.number}
                     </div>
-                    <div className="text-blue-200 text-sm">
+                    <div className="text-primary-200 text-sm">
                       {achievement.label}
                     </div>
                   </div>
@@ -214,7 +214,7 @@ const Hero = () => {
               </div>
 
               {/* Floating Cards */}
-              <div className="-top-4 -right-4 absolute bg-gradient-to-r from-cyan-500 to-blue-600 shadow-xl p-4 rounded-xl text-white">
+              <div className="-top-4 -right-4 absolute bg-gradient-to-r from-cyan-500 to-primary-500 shadow-xl p-4 rounded-xl text-white">
                 <div className="text-center">
                   <div className="font-bold text-2xl">ESG</div>
                   <div className="text-xs">Compliant</div>

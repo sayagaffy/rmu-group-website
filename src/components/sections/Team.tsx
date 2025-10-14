@@ -139,7 +139,7 @@ const companyTeams: CompanyTeam[] = [
     companyName: "PT Rekayasa Mineral Utama",
     companyType: "Mining Technology",
     icon: <Cog className="w-8 h-8" />,
-    gradient: "from-blue-600 to-blue-800",
+    gradient: "from-primary-500 to-primary-700",
     leadership: [
       {
         id: "zaki-mubarok-rmu",
@@ -181,7 +181,7 @@ const companyTeams: CompanyTeam[] = [
     companyName: "PT Bahana Nusa Pasifik",
     companyType: "Maritime Services",
     icon: <Ship className="w-8 h-8" />,
-    gradient: "from-blue-600 to-cyan-700",
+    gradient: "from-primary-500 to-cyan-700",
     leadership: [
       {
         id: "tino-rilantino",
@@ -312,7 +312,7 @@ const companyTeams: CompanyTeam[] = [
     companyName: "PT Gemilang Kharisma",
     companyType: "Marine Operations",
     icon: <Waves className="w-8 h-8" />,
-    gradient: "from-cyan-600 to-blue-700",
+    gradient: "from-cyan-600 to-primary-600",
     leadership: [
       {
         id: "gemilang-managing-director",
@@ -437,7 +437,7 @@ const Team = () => {
       <div className="flex items-start gap-4">
         {/* Avatar */}
         <div className="flex-shrink-0">
-          <div className="flex justify-center items-center bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full w-16 h-16">
+          <div className="flex justify-center items-center bg-gradient-to-br from-primary-500 to-cyan-600 rounded-full w-16 h-16">
             <span className="font-bold text-white text-lg">
               {member.name
                 .split(" ")
@@ -453,7 +453,7 @@ const Team = () => {
           <h3 className="mb-1 font-heading font-bold text-gray-900 text-lg">
             {member.name}
           </h3>
-          <p className="mb-1 font-semibold text-blue-600 text-sm">
+          <p className="mb-1 font-semibold text-primary-500 text-sm">
             {member.position}
           </p>
           <p className="mb-3 text-gray-600 text-xs">{member.company}</p>
@@ -492,13 +492,13 @@ const Team = () => {
                   .map((skill, index) => (
                     <span
                       key={index}
-                      className="bg-blue-100 px-2 py-1 rounded-full font-medium text-blue-700 text-xs"
+                      className="bg-primary-100 px-2 py-1 rounded-full font-medium text-primary-600 text-xs"
                     >
                       {skill}
                     </span>
                   ))}
                 {!expandedMember && member.expertise.length > 2 && (
-                  <span className="text-blue-600 text-xs">
+                  <span className="text-primary-500 text-xs">
                     +{member.expertise.length - 2} more
                   </span>
                 )}
@@ -510,7 +510,7 @@ const Team = () => {
           {member.description.length > 120 && (
             <button
               onClick={() => toggleMemberExpansion(member.id)}
-              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 text-xs transition-colors"
+              className="flex items-center gap-1 text-primary-500 hover:text-primary-600 text-xs transition-colors"
             >
               <span>
                 {expandedMember === member.id ? "Show Less" : "Learn More"}
@@ -530,18 +530,18 @@ const Team = () => {
   return (
     <section
       id="team"
-      className="bg-gradient-to-br from-gray-50 to-blue-50 section-padding"
+      className="bg-gradient-to-br from-gray-50 to-primary-50 section-padding"
     >
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 mb-4 px-4 py-2 rounded-full font-medium text-blue-800 text-sm">
+          <div className="inline-flex items-center gap-2 bg-primary-100 mb-4 px-4 py-2 rounded-full font-medium text-primary-700 text-sm">
             <Users className="w-4 h-4" />
             Our Leadership Structure
           </div>
           <h2 className="mb-6 font-heading font-bold text-gray-900 text-4xl md:text-5xl">
             Expert Leadership for{" "}
-            <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 text-gradient text-transparent">
+            <span className="bg-clip-text bg-gradient-to-r from-primary-500 to-cyan-600 text-gradient text-transparent">
               Innovation
             </span>
           </h2>
@@ -556,19 +556,19 @@ const Team = () => {
         <div className="bg-white shadow-xl mb-16 p-8 rounded-3xl">
           <div className="gap-8 grid grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
-              <div className="mb-2 font-bold text-blue-600 text-3xl">500+</div>
+              <div className="mb-2 font-bold text-primary-500 text-3xl">500+</div>
               <div className="text-gray-600 text-sm">Total Team Members</div>
             </div>
             <div className="text-center">
-              <div className="mb-2 font-bold text-blue-600 text-3xl">5</div>
+              <div className="mb-2 font-bold text-primary-500 text-3xl">5</div>
               <div className="text-gray-600 text-sm">Operating Companies</div>
             </div>
             <div className="text-center">
-              <div className="mb-2 font-bold text-blue-600 text-3xl">25+</div>
+              <div className="mb-2 font-bold text-primary-500 text-3xl">25+</div>
               <div className="text-gray-600 text-sm">Leadership Positions</div>
             </div>
             <div className="text-center">
-              <div className="mb-2 font-bold text-blue-600 text-3xl">100%</div>
+              <div className="mb-2 font-bold text-primary-500 text-3xl">100%</div>
               <div className="text-gray-600 text-sm">
                 Commitment to Excellence
               </div>
@@ -580,7 +580,7 @@ const Team = () => {
         <div className="mb-20">
           <div className="mb-12 text-center">
             <div className="flex justify-center items-center gap-3 mb-6">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl text-white">
+              <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-4 rounded-2xl text-white">
                 <Crown className="w-8 h-8" />
               </div>
               <div>
@@ -657,7 +657,7 @@ const Team = () => {
                   <Star className="w-8 h-8 text-cyan-400" />
                 </div>
                 <h4 className="mb-2 font-semibold text-xl">Excellence</h4>
-                <p className="text-blue-100 text-sm">
+                <p className="text-primary-100 text-sm">
                   Striving for the highest standards across all our business
                   units, from technology innovation to operational excellence
                 </p>
@@ -667,7 +667,7 @@ const Team = () => {
                   <Award className="w-8 h-8 text-cyan-400" />
                 </div>
                 <h4 className="mb-2 font-semibold text-xl">Innovation</h4>
-                <p className="text-blue-100 text-sm">
+                <p className="text-primary-100 text-sm">
                   Leading technological advancement in mining, maritime,
                   manufacturing, and construction industries
                 </p>
@@ -677,7 +677,7 @@ const Team = () => {
                   <Users className="w-8 h-8 text-cyan-400" />
                 </div>
                 <h4 className="mb-2 font-semibold text-xl">Collaboration</h4>
-                <p className="text-blue-100 text-sm">
+                <p className="text-primary-100 text-sm">
                   Building strong partnerships across industries to create
                   sustainable value for all stakeholders
                 </p>

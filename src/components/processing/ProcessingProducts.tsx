@@ -17,7 +17,7 @@ interface ProcessingProductsProps {
 
 export default function ProcessingProducts({ title, description, items }: ProcessingProductsProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-gray-50">
+    <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
           {title}
@@ -32,7 +32,7 @@ export default function ProcessingProducts({ title, description, items }: Proces
               key={index}
               className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
             >
-              <Package className="w-16 h-16 text-blue-600 mb-6" />
+              <Package className="w-16 h-16 text-primary-500 mb-6" />
 
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 {product.name}

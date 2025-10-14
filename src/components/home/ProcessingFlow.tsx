@@ -49,12 +49,12 @@ export default function ProcessingFlow({ data }: ProcessingFlowProps) {
                 {/* Step Card */}
                 <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-8 text-center relative">
                   {/* Number Badge */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-xl">{step.number}</span>
                   </div>
 
                   {/* Icon */}
-                  <Icon className="w-16 h-16 mx-auto mb-4 text-blue-600" />
+                  <Icon className="w-16 h-16 mx-auto mb-4 text-primary-500" />
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
@@ -83,9 +83,9 @@ export default function ProcessingFlow({ data }: ProcessingFlowProps) {
               return (
                 <div
                   key={product}
-                  className="bg-white border-2 border-blue-200 rounded-lg p-6 text-center hover:border-blue-400 hover:shadow-md transition-all"
+                  className="bg-white border-2 border-primary-200 rounded-lg p-6 text-center hover:border-blue-400 hover:shadow-md transition-all"
                 >
-                  <Icon className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+                  <Icon className="w-12 h-12 mx-auto mb-3 text-primary-500" />
                   <p className="text-sm font-semibold text-gray-900">{product}</p>
                 </div>
               );
