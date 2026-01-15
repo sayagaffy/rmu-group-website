@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface HeroSlide {
   id: number;
@@ -15,6 +15,8 @@ interface HeroSlide {
     text: string;
     link: string;
   };
+  type?: 'image' | 'video';
+  videoUrl?: string;
 }
 
 interface HeroSliderProps {
@@ -30,17 +32,27 @@ export default function HeroSlider({
 }: HeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Auto-rotation logic
   useEffect(() => {
-    if (!autoplay || isPaused) return;
+    if (!autoplay || isPaused || isModalOpen) return;
+
+    // Don't auto-rotate if current slide is video (optional, but good UX? 
+    // Actually user wants it as a slider, so maybe it should still rotate? 
+    // Use case: "slider ini isinya video". Usually video headers loop.
+    // If it's a slider, usually we pause on video or let it play background.
+    // Given the prompt "slider utama... isinya video", I assume it's like a background video slide.
+
+    // Safety check for slides validity
+    if (!slides || slides.length === 0) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [autoplay, interval, isPaused, slides.length]);
+  }, [autoplay, interval, isPaused, isModalOpen, slides.length]);
 
   // Handlers
   const handlePrevious = () => {
@@ -72,10 +84,10 @@ export default function HeroSlider({
   return (
     <div
       className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[800px] overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <AnimatePresence mode="wait">
+      {/* Removed mode="wait" to prevent white flash/blank state during rapid transitions or loop-back */}
+      <AnimatePresence initial={false}>
         <motion.div
           key={currentSlide}
           initial={{ opacity: 0 }}
@@ -84,15 +96,27 @@ export default function HeroSlider({
           transition={{ duration: 0.5 }}
           className="absolute inset-0"
         >
-          {/* Background Image */}
-          <Image
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].title}
-            fill
-            className="object-cover"
-            priority={currentSlide === 0}
-            quality={90}
-          />
+          {/* Background Media */}
+          {slides[currentSlide]?.type === 'video' && slides[currentSlide]?.videoUrl ? (
+            <div className="absolute inset-0 w-full h-full pointer-events-none">
+              <iframe
+                src={slides[currentSlide].videoUrl}
+                className="w-full h-full object-cover"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ pointerEvents: 'none' }}
+              />
+            </div>
+          ) : (
+            <Image
+              src={slides[currentSlide]?.image || ''}
+              alt={slides[currentSlide]?.title || 'Slide'}
+              fill
+              className="object-cover"
+              priority={currentSlide === 0}
+              quality={90}
+            />
+          )}
 
           {/* Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
@@ -125,17 +149,54 @@ export default function HeroSlider({
                   transition={{ delay: 0.6, duration: 0.5 }}
                   className="mt-8"
                 >
-                  <Link
-                    href={slides[currentSlide].cta!.link}
-                    className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
-                  >
-                    {slides[currentSlide].cta!.text}
-                  </Link>
+                  {slides[currentSlide].type === 'video' ? (
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+                    >
+                      {slides[currentSlide].cta!.text}
+                    </button>
+                  ) : (
+                    <Link
+                      href={slides[currentSlide].cta!.link}
+                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+                    >
+                      {slides[currentSlide].cta!.text}
+                    </Link>
+                  )}
                 </motion.div>
               )}
             </div>
           </div>
         </motion.div>
+      </AnimatePresence>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isModalOpen && slides[currentSlide].type === 'video' && slides[currentSlide].videoUrl && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-6 right-6 z-50 text-white hover:text-yellow-500 transition-colors bg-black/50 rounded-full p-2"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <div className="w-full h-full" onClick={(e) => e.stopPropagation()}>
+              <iframe
+                src={slides[currentSlide].videoUrl?.replace('mute=1', 'mute=0')}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Previous Button */}
@@ -162,9 +223,8 @@ export default function HeroSlider({
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-200 ${
-              index === currentSlide ? 'bg-white' : 'bg-white/50'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentSlide ? 'bg-white' : 'bg-white/50'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

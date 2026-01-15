@@ -10,6 +10,8 @@ export interface HeroSlide {
     text: string;
     link: string;
   };
+  type?: 'image' | 'video';
+  videoUrl?: string;
 }
 
 export interface HomeContent {
@@ -89,6 +91,18 @@ export const homeContent: HomeContent = {
   hero: {
     slides: [
       {
+        id: 0,
+        image: '/images/home/hero-1.png', // Fallback image
+        title: 'RMU Group Corporate Video',
+        subtitle: 'Pioneering Sustainable Mineral Processing',
+        type: 'video',
+        videoUrl: 'https://www.youtube.com/embed/9UEfrzw4XLU?autoplay=1&mute=1&loop=1&playlist=9UEfrzw4XLU&controls=0&showinfo=0&rel=0&playsinline=1',
+        cta: {
+          text: 'Watch Full Video',
+          link: 'https://youtu.be/9UEfrzw4XLU'
+        }
+      },
+      {
         id: 1,
         image: '/images/home/hero-1.png',
         title: 'We Empower World Sustainable Energy',
@@ -130,7 +144,7 @@ export const homeContent: HomeContent = {
       }
     ],
     autoplay: true,
-    interval: 5000
+    interval: 12000
   },
 
   mission: {
