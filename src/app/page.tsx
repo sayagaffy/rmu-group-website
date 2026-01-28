@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-slate-50 min-h-screen selection:bg-primary selection:text-white">
       <Header />
 
       {/* NEW: Hero Slider */}

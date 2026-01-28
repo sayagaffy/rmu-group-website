@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { useScroll, useTransform, motion } from "framer-motion";
-import Image from "next/image";
+import { useScroll, useTransform, motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface MissionStatementProps {
   text: string;
@@ -10,61 +11,84 @@ interface MissionStatementProps {
 
 export default function MissionStatement({
   text,
-  background,
 }: MissionStatementProps) {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: '-20%' });
+  
+  // Split text into words for granular animation
+  const words = text.split(' ');
 
-  // Function to highlight keywords
-  const highlightKeywords = (text: string) => {
-    const keywords = [
-      "transform",
-      "raw energy",
-      "lasting power",
-      "batteries",
-      "drive progress",
-      "sustainability",
-      "human potential",
-    ];
-
-    let highlighted = text;
-    keywords.forEach((keyword) => {
-      const regex = new RegExp(`(${keyword})`, "gi");
-      highlighted = highlighted.replace(
-        regex,
-        '<span class="font-extrabold text-yellow-400">$1</span>'
-      );
-    });
-
-    return highlighted;
-  };
+  const keywords = [
+    'transform',
+    'raw energy',
+    'lasting power',
+    'batteries',
+    'drive progress',
+    'sustainability',
+    'human potential',
+  ];
 
   return (
-    <section className="relative flex justify-center items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px] overflow-hidden">
-      {/* Parallax Background */}
-      <motion.div className="z-0 absolute inset-0" style={{ y }}>
-        <Image
-          src={background || "/images/home/hero-1.png"}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "/images/home/hero-1.png";
-          }}
-          alt="Mission background"
-          fill
-          className="object-cover"
-          priority={false}
-        />
-      </motion.div>
+    <section
+      ref={containerRef}
+      className="bg-white py-32 lg:py-48 relative overflow-hidden"
+    >
+      {/* Agency Grid Lines */}
+      <div className="absolute inset-0 border-y border-slate-100 pointer-events-none" />
+      <div className="absolute left-8 lg:left-12 inset-y-0 border-l border-slate-100 pointer-events-none" />
+      <div className="absolute right-8 lg:right-12 inset-y-0 border-r border-slate-100 pointer-events-none" />
 
-      {/* Overlay */}
-      <div className="z-10 absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
+      <div className="container-custom relative z-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+          
+          {/* Label / Meta */}
+          <div className="lg:w-1/4">
+             <motion.div 
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8 }}
+               className="flex items-center gap-4"
+             >
+               <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+                 01 — Our Mission
+               </span>
+               <div className="h-[1px] w-12 bg-slate-200" />
+             </motion.div>
+          </div>
 
-      {/* Content */}
-      <div className="z-20 relative mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
-        <h2
-          className="font-bold text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed tracking-wide"
-          dangerouslySetInnerHTML={{ __html: highlightKeywords(text) }}
-        />
+          {/* Main Typography */}
+          <div className="lg:w-3/4">
+            <h2 className="font-heading font-bold text-slate-900 text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+              {words.map((word, i) => {
+                const cleanWord = word.replace(/[^a-zA-Z0-9]/g, '');
+                const highlight = keywords.some((k) => k.includes(cleanWord) || cleanWord.includes(k));
+
+                return (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: i * 0.02, 
+                      ease: [0.215, 0.61, 0.355, 1] 
+                    }}
+                    className={cn(
+                      "inline-block mr-[0.25em] relative",
+                      highlight 
+                        ? "text-primary-600" 
+                        : "text-slate-900"
+                    )}
+                  >
+                    {word}
+                  </motion.span>
+                );
+              })}
+            </h2>
+          </div>
+        </div>
       </div>
     </section>
   );

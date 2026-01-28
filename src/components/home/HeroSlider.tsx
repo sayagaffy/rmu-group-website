@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/Button";
 
 interface HeroSlide {
   id: number;
@@ -147,21 +148,21 @@ export default function HeroSlider({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
-                  className="mt-8"
+                  className="mt-8 flex justify-center gap-4"
                 >
                   {slides[currentSlide].type === 'video' ? (
-                    <button
+                    <Button
+                      variant="accent"
+                      size="lg"
                       onClick={() => setIsModalOpen(true)}
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
                     >
                       {slides[currentSlide].cta!.text}
-                    </button>
+                    </Button>
                   ) : (
-                    <Link
-                      href={slides[currentSlide].cta!.link}
-                      className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
-                    >
-                      {slides[currentSlide].cta!.text}
+                    <Link href={slides[currentSlide].cta!.link}>
+                      <Button variant="accent" size="lg">
+                        {slides[currentSlide].cta!.text}
+                      </Button>
                     </Link>
                   )}
                 </motion.div>

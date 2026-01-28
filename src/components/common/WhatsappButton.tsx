@@ -44,29 +44,31 @@ const WhatsAppButton = () => {
     <>
       {/* Tooltip */}
       {showTooltip && (
-        <div className="right-6 bottom-24 z-50 fixed animate-fade-in">
-          <div className="relative bg-white shadow-xl p-4 border border-gray-200 rounded-lg max-w-xs">
+        <div className="right-6 bottom-24 z-50 fixed animate-fade-in-up origin-bottom-right">
+          <div className="relative glass-panel p-5 rounded-2xl max-w-xs shadow-soft-2xl border border-white/40 backdrop-blur-xl">
             <button
               onClick={() => setShowTooltip(false)}
-              className="top-2 right-2 absolute text-gray-400 hover:text-gray-600"
+              className="top-3 right-3 absolute text-slate-400 hover:text-slate-600 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
-            <div className="pr-6">
-              <h4 className="mb-1 font-semibold text-gray-900">Need Help?</h4>
-              <p className="mb-3 text-gray-600 text-sm">
+            <div className="pr-2">
+              <h4 className="mb-2 font-bold text-slate-900 text-lg">Need Help?</h4>
+              <p className="mb-4 text-slate-600 text-sm leading-relaxed text-balance">
                 Chat with us on WhatsApp for quick responses about our mining
                 technology and construction services.
               </p>
               <button
                 onClick={openWhatsApp}
-                className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg w-full font-medium text-white text-sm transition-colors"
+                className="bg-[#25D366] hover:bg-[#128C7E] px-4 py-3 rounded-xl w-full font-bold text-white text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
               >
+                <MessageCircle className="w-5 h-5" />
                 Start Chat
               </button>
             </div>
             {/* Arrow pointing to WhatsApp button */}
-            <div className="right-8 -bottom-2 absolute bg-white border-gray-200 border-r border-b w-4 h-4 rotate-45"></div>
+            {/* Replaced CSS arrow with specific shape or just remove it for cleaner float look. I'll utilize a small svg or transform. */}
+            <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45 border-r border-b border-white/20"></div>
           </div>
         </div>
       )}
@@ -74,18 +76,18 @@ const WhatsAppButton = () => {
       {/* WhatsApp Button */}
       <button
         onClick={openWhatsApp}
-        className="group right-6 bottom-6 z-40 fixed bg-green-500 hover:bg-green-600 shadow-lg p-4 rounded-full text-white hover:scale-110 transition-all animate-float duration-300"
+        className="group right-6 bottom-6 z-40 fixed bg-[#25D366] hover:bg-[#128C7E] shadow-lg shadow-green-900/20 p-4 rounded-2xl text-white hover:scale-110 transition-all animate-float duration-300 ring-2 ring-white/50"
         aria-label="Contact via WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <MessageCircle className="w-7 h-7" />
 
         {/* Pulse animation */}
-        <div className="absolute inset-0 bg-green-500 opacity-75 rounded-full animate-ping"></div>
+        <div className="absolute inset-0 bg-green-500 rounded-2xl animate-ping opacity-20"></div>
 
         {/* Hover text */}
-        <div className="top-1/2 right-full absolute bg-gray-900 opacity-0 group-hover:opacity-100 mr-3 px-3 py-2 rounded-lg font-medium text-white text-sm whitespace-nowrap transition-opacity -translate-y-1/2 transform">
-          Chat with us on WhatsApp
-          <div className="top-1/2 left-full absolute border-4 border-transparent border-l-gray-900 -translate-y-1/2 transform"></div>
+        <div className="top-1/2 right-full absolute bg-slate-900/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 mr-4 px-4 py-2 rounded-xl font-medium text-white text-sm whitespace-nowrap transition-all -translate-y-1/2 translate-x-4 group-hover:translate-x-0 shadow-xl">
+          Chat with us
+          <div className="top-1/2 left-full absolute border-4 border-transparent border-l-slate-900/90 -translate-y-1/2 transform"></div>
         </div>
       </button>
     </>

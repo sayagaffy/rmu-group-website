@@ -33,39 +33,45 @@ const productIcons: { [key: string]: any } = {
 
 export default function ProcessingFlow({ data }: ProcessingFlowProps) {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-padding bg-white relative">
+      <div className="container-custom">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
+        <h2 className="text-3xl lg:text-5xl font-bold text-center text-slate-900 mb-20 tracking-tight">
           {data.title}
         </h2>
 
         {/* Processing Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 relative">
           {data.steps.map((step, index) => {
             const Icon = stepIcons[step.number as keyof typeof stepIcons];
             return (
-              <div key={step.number} className="relative">
+              <div key={step.number} className="relative group">
                 {/* Step Card */}
-                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-8 text-center relative">
+                <div className="h-full bg-white rounded-3xl p-8 text-center relative border border-slate-100 shadow-soft hover:shadow-soft-xl transition-all duration-300 hover:-translate-y-2 z-10">
                   {/* Number Badge */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-xl">{step.number}</span>
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 bg-gradient-to-br from-primary to-primary-600 rounded-2xl rotate-45 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-xl -rotate-45">{step.number}</span>
                   </div>
 
                   {/* Icon */}
-                  <Icon className="w-16 h-16 mx-auto mb-4 text-primary-500" />
+                  <div className="mt-8 mb-6 relative">
+                     <div className="w-20 h-20 mx-auto bg-slate-50 rounded-full flex items-center justify-center group-hover:bg-primary/5 transition-colors duration-300">
+                        <Icon className="w-10 h-10 text-primary transition-transform duration-300 group-hover:scale-110" />
+                     </div>
+                  </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">{step.title}</h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  <p className="text-slate-600 leading-relaxed text-sm">{step.description}</p>
                 </div>
 
                 {/* Arrow (Desktop only, not after last step) */}
                 {index < data.steps.length - 1 && (
-                  <ChevronRight className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 w-8 h-8 text-gray-400" />
+                  <div className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-0 justify-center w-8">
+                     <ChevronRight className="w-8 h-8 text-slate-300 animate-pulse" />
+                  </div>
                 )}
               </div>
             );
@@ -73,20 +79,22 @@ export default function ProcessingFlow({ data }: ProcessingFlowProps) {
         </div>
 
         {/* End Products */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            End Products
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-24">
+          <div className="text-center mb-10">
+             <h3 className="text-2xl font-bold text-slate-900">End Products</h3>
+             <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {data.endProducts.map((product) => {
               const Icon = productIcons[product] || Hexagon;
               return (
                 <div
                   key={product}
-                  className="bg-white border-2 border-primary-200 rounded-lg p-6 text-center hover:border-blue-400 hover:shadow-md transition-all"
+                  className="group bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center hover:bg-white hover:border-primary/20 hover:shadow-soft-lg transition-all duration-300 cursor-default"
                 >
-                  <Icon className="w-12 h-12 mx-auto mb-3 text-primary-500" />
-                  <p className="text-sm font-semibold text-gray-900">{product}</p>
+                  <Icon className="w-10 h-10 mx-auto mb-4 text-slate-400 group-hover:text-primary transition-colors duration-300" />
+                  <p className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">{product}</p>
                 </div>
               );
             })}

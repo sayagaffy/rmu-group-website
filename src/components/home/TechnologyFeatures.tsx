@@ -31,12 +31,18 @@ const featureIcons = {
 
 export default function TechnologyFeatures({ data }: TechnologyFeaturesProps) {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-padding bg-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+      
+      <div className="container-custom relative z-10">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-          {data.title}
-        </h2>
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+            {data.title}
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+        </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -45,24 +51,31 @@ export default function TechnologyFeatures({ data }: TechnologyFeaturesProps) {
             return (
               <div
                 key={feature.number}
-                className="p-6 text-center hover:transform hover:scale-105 transition-all duration-300"
+                className="group relative p-8 rounded-3xl bg-white border border-slate-100 shadow-soft hover:shadow-soft-xl transition-all duration-500 hover:-translate-y-2"
               >
-                {/* Optional Icon */}
-                <Icon className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+                {/* Hover Gradient Border Effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Icon */}
+                <div className="relative z-10 mb-6">
+                   <div className="w-16 h-16 mx-auto bg-slate-50 rounded-2xl flex items-center justify-center group-hover:bg-white transition-colors duration-300 shadow-sm">
+                      <Icon className="w-8 h-8 text-slate-700 group-hover:text-primary transition-colors duration-300" />
+                   </div>
+                </div>
 
                 {/* Circular Badge */}
                 <div
-                  className={`w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 rounded-full border-4 border-white shadow-xl flex items-center justify-center ${
+                  className={`w-20 h-20 mx-auto mb-8 rounded-full shadow-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500 ${
                     colorClasses[feature.color] || colorClasses.blue
                   }`}
                 >
-                  <span className="text-4xl md:text-5xl font-black text-white">
+                  <span className="text-3xl font-black text-white">
                     {feature.number}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight">
+                <h3 className="text-xl font-bold text-slate-900 leading-tight group-hover:text-primary transition-colors duration-300">
                   {feature.title}
                 </h3>
               </div>

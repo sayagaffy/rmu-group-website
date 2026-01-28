@@ -52,43 +52,45 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
-          : "bg-transparent"
+          ? "bg-white/80 backdrop-blur-xl shadow-soft h-16 lg:h-20"
+          : "bg-transparent h-20 lg:h-24"
       }`}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="flex justify-between items-center h-16 lg:h-20">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-full">
+        <div className="flex justify-between items-center h-full">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center shrink-0">
             <Link
               href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
               <Image
-                src="/logo-rmu.png" // Path ke logo di folder public
-                alt="RMU Group Logo" // Teks alternatif untuk aksesibilitas
-                width={120} // Sesuaikan lebar logo
-                height={67} // Sesuaikan tinggi logo
-                className="rounded-lg" // Tambahkan styling jika perlu
+                src="/logo-rmu.png"
+                alt="RMU Group Logo"
+                width={isScrolled ? 100 : 120}
+                height={isScrolled ? 56 : 67}
+                className="transition-all duration-500"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) =>
               item.type === "route" ? (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-primary-500 border-b-2 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive(item)
-                      ? "border-primary-500 text-primary-500"
+                      ? isScrolled 
+                        ? "bg-primary/10 text-primary"
+                        : "bg-white/20 text-white backdrop-blur-sm"
                       : isScrolled
-                      ? "text-gray-700 border-transparent"
-                      : "text-white hover:text-primary-200 border-transparent"
+                      ? "text-slate-600 hover:text-primary hover:bg-slate-50"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {item.name}
@@ -97,10 +99,10 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`font-medium transition-colors hover:text-primary-500 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     isScrolled
-                      ? "text-gray-700"
-                      : "text-white hover:text-primary-200"
+                      ? "text-slate-600 hover:text-primary hover:bg-slate-50"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {item.name}
@@ -110,20 +112,23 @@ const Header = () => {
           </nav>
 
           {/* Contact Info & CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
             <div
-              className={`text-sm ${
-                isScrolled ? "text-gray-600" : "text-primary-100"
+              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                isScrolled ? "text-slate-600" : "text-white/90"
               }`}
             >
-              <div className="flex items-center gap-1">
-                <Phone className="w-4 h-4" />
-                <span>+62 21 22761331</span>
-              </div>
+              <Phone className="w-4 h-4" />
+              <span>+62 21 22761331</span>
             </div>
+            {/* We'll use a standard button here but styled to match context because we can't easily import the custom Button without changing imports above */}
             <button
               onClick={() => scrollToSection("#contact")}
-              className="bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded-lg font-medium text-white transition-colors"
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 ${
+                 isScrolled
+                  ? "bg-primary text-white hover:bg-primary-600"
+                  : "bg-white text-primary hover:bg-primary-50"
+              }`}
             >
               Contact Us
             </button>
@@ -131,39 +136,44 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden hover:bg-gray-100/10 p-2 rounded-lg transition-colors"
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+               isScrolled ? "hover:bg-slate-100" : "hover:bg-white/10"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
               <X
                 className={`w-6 h-6 ${
-                  isScrolled ? "text-gray-900" : "text-white"
+                  isScrolled ? "text-slate-900" : "text-white"
                 }`}
               />
             ) : (
               <Menu
                 className={`w-6 h-6 ${
-                  isScrolled ? "text-gray-900" : "text-white"
+                  isScrolled ? "text-slate-900" : "text-white"
                 }`}
               />
             )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-white shadow-lg border-gray-200 border-t">
-            <div className="space-y-4 px-4 py-6">
+        {/* Mobile Navigation Overlay */}
+        <div 
+          className={`fixed inset-0 z-40 bg-white/95 backdrop-blur-xl transition-all duration-500 lg:hidden flex flex-col pt-24 px-6 ${
+            isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+          }`}
+        >
+            <div className="flex flex-col space-y-4">
               {navItems.map((item) =>
                 item.type === "route" ? (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block py-2 w-full font-medium text-left transition-colors rounded-lg px-3 ${
+                    className={`text-2xl font-bold py-2 border-b border-gray-100 ${
                       isActive(item)
-                        ? "text-primary-500 bg-primary-50"
-                        : "text-gray-700 hover:text-primary-500 hover:bg-gray-50"
+                        ? "text-primary"
+                        : "text-slate-600 hover:text-primary"
                     }`}
                   >
                     {item.name}
@@ -172,32 +182,31 @@ const Header = () => {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="block hover:bg-gray-50 px-3 py-2 rounded-lg w-full font-medium text-gray-700 hover:text-primary-500 text-left transition-colors"
+                    className="text-2xl font-bold py-2 text-left text-slate-600 hover:text-primary border-b border-gray-100"
                   >
                     {item.name}
                   </button>
                 )
               )}
 
-              <div className="pt-4 border-gray-200 border-t">
-                <div className="flex items-center gap-2 mb-3 text-gray-600">
-                  <Phone className="w-4 h-4" />
-                  <span className="text-sm">+62 21 22761331</span>
+              <div className="pt-8 space-y-4">
+                <div className="flex items-center gap-3 text-slate-600">
+                  <Phone className="w-5 h-5 text-primary" />
+                  <span className="text-lg font-medium">+62 21 22761331</span>
                 </div>
-                <div className="flex items-center gap-2 mb-4 text-gray-600">
-                  <Mail className="w-4 h-4" />
-                  <span className="text-sm">info@rekayasamineralutama.com</span>
+                <div className="flex items-center gap-3 text-slate-600">
+                  <Mail className="w-5 h-5 text-primary" />
+                  <span className="text-lg font-medium">info@rekayasamineralutama.com</span>
                 </div>
                 <button
                   onClick={() => scrollToSection("#contact")}
-                  className="bg-primary-500 hover:bg-primary-600 py-3 rounded-lg w-full font-medium text-white transition-colors"
+                  className="w-full mt-4 bg-primary text-white py-4 rounded-xl text-lg font-bold shadow-lg shadow-primary/20"
                 >
                   Contact Us
                 </button>
               </div>
             </div>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );
