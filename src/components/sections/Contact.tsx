@@ -1,15 +1,15 @@
 "use client";
 
-import React from "react";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
   Building,
+  Clock,
+  Mail,
+  MapPin,
   MessageCircle,
+  Phone,
   Send,
 } from "lucide-react";
+import React from "react";
 
 const Contact = () => {
   const contactLocations = [
@@ -89,16 +89,8 @@ const Contact = () => {
     "Project Management Services",
   ];
 
-  const openWhatsApp = (phone: string, officeName: string) => {
-    const message = `Hello ${officeName}, I'm interested in learning more about RMU Group services.`;
-    const formattedPhone = phone
-      .replace(/\D/g, "")
-      .replace(/^62/, "")
-      .replace(/^0/, "");
-    const whatsappPhone = `62${formattedPhone}`;
-    window.open(
-      `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`
-    );
+  const callPhone = (phone: string) => {
+    window.location.href = `tel:${phone}`;
   };
 
   const openEmail = (email: string, subject: string) => {
@@ -167,13 +159,13 @@ const Contact = () => {
               </div>
 
               <div className="flex sm:flex-row flex-col gap-4">
-                <button
-                  onClick={() => openWhatsApp("+6282122761331", "RMU Group")}
-                  className="flex justify-center items-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
+                <a
+                  href="tel:+622122761331"
+                  className="flex justify-center items-center gap-2 bg-primary-500 hover:bg-primary-600 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp
-                </button>
+                  <Phone className="w-5 h-5" />
+                  Call Now
+                </a>
                 <button
                   onClick={() =>
                     openEmail(
@@ -255,13 +247,13 @@ const Contact = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2">
-                  <button
-                    onClick={() => openWhatsApp(location.phone, location.name)}
-                    className="flex flex-1 justify-center items-center gap-2 bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-medium text-white text-sm transition-colors"
+                  <a
+                    href={`tel:${location.phone}`}
+                    className="flex flex-1 justify-center items-center gap-2 bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded-lg font-medium text-white text-sm transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
-                  </button>
+                    <Phone className="w-4 h-4" />
+                    Call
+                  </a>
                   <button
                     onClick={() =>
                       openEmail(location.email, `Inquiry to ${location.name}`)
@@ -301,12 +293,12 @@ const Contact = () => {
               </div>
 
               <div className="text-center">
-                <div className="flex justify-center items-center bg-green-100 mx-auto mb-3 rounded-full w-16 h-16">
-                  <MessageCircle className="w-8 h-8 text-green-600" />
+                <div className="flex justify-center items-center bg-primary-100 mx-auto mb-3 rounded-full w-16 h-16">
+                  <Phone className="w-8 h-8 text-primary-600" />
                 </div>
-                <h4 className="mb-1 font-semibold text-gray-900">WhatsApp</h4>
+                <h4 className="mb-1 font-semibold text-gray-900">Direct Call</h4>
                 <p className="text-gray-600 text-sm">
-                  Quick messaging for urgent inquiries
+                  Speak directly with our team
                 </p>
               </div>
 
@@ -321,13 +313,13 @@ const Contact = () => {
               </div>
             </div>
 
-            <button
-              onClick={() => openWhatsApp("+6282122761331", "RMU Group")}
-              className="flex justify-center items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 hover:shadow-lg mx-auto px-8 py-4 rounded-lg font-semibold text-white transition-shadow"
+            <a
+              href="tel:+622122761331"
+              className="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 hover:shadow-lg px-8 py-4 rounded-lg font-semibold text-white transition-shadow"
             >
-              <MessageCircle className="w-5 h-5" />
-              Start Conversation Now
-            </button>
+              <Phone className="w-5 h-5" />
+              Call Us Now
+            </a>
           </div>
         </div>
       </div>

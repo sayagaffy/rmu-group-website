@@ -1,12 +1,11 @@
-import { Metadata } from 'next';
-import { esgContent } from '@/data/esg';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/common/WhatsappButton';
+import CarbonCreditOpportunities from '@/components/esg/CarbonCreditOpportunities';
 import ESGHero from '@/components/esg/ESGHero';
 import ESGPillars from '@/components/esg/ESGPillars';
-import CarbonCreditOpportunities from '@/components/esg/CarbonCreditOpportunities';
 import VisionRoadmap from '@/components/esg/VisionRoadmap';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+import { esgContent } from '@/data/esg';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'ESG & Carbon Credit | RMU Group',
@@ -43,7 +42,6 @@ export default function ESGPage() {
       />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }

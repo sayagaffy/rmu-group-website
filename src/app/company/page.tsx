@@ -1,26 +1,25 @@
-import { Metadata } from 'next';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/common/WhatsappButton';
 import { BreadcrumbWithHome } from '@/components/common/Breadcrumb';
 import { TeamGrid } from '@/components/company';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 import {
-  Building2,
-  Users,
-  Calendar,
-  Target,
   Award,
-  TrendingUp,
-  Mail,
-  Factory,
-  Ship,
+  Building2,
+  Calendar,
   Cog,
-  Waves,
   Construction,
   Droplets,
+  Factory,
   Fuel,
-  HardHat
+  HardHat,
+  Mail,
+  Ship,
+  Target,
+  TrendingUp,
+  Users,
+  Waves
 } from 'lucide-react';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Our Companies & Leadership | RMU Group',
@@ -437,7 +436,6 @@ export default function CompanyPage() {
       </section>
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }

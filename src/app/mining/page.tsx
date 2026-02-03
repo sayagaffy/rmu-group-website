@@ -1,13 +1,12 @@
-import { Metadata } from 'next';
-import { miningContent } from '@/data/mining';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/common/WhatsappButton';
+import Header from '@/components/layout/Header';
 import MiningHero from '@/components/mining/MiningHero';
 import MiningIntro from '@/components/mining/MiningIntro';
-import StrategicRegions from '@/components/mining/StrategicRegions';
 import MiningStats from '@/components/mining/MiningStats';
+import StrategicRegions from '@/components/mining/StrategicRegions';
 import SustainabilityInitiatives from '@/components/mining/SustainabilityInitiatives';
+import { miningContent } from '@/data/mining';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Mining Operations | RMU Group',
@@ -49,7 +48,6 @@ export default function MiningPage() {
       />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }
