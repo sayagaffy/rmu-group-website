@@ -1,13 +1,12 @@
-import { Metadata } from 'next';
-import { processingContent } from '@/data/processing';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/common/WhatsappButton';
-import ProcessingHero from '@/components/processing/ProcessingHero';
+import Header from '@/components/layout/Header';
 import MPALTechnology from '@/components/processing/MPALTechnology';
-import TechnologyFeatures from '@/components/processing/TechnologyFeatures';
 import ProcessingBenefits from '@/components/processing/ProcessingBenefits';
+import ProcessingHero from '@/components/processing/ProcessingHero';
 import ProcessingProducts from '@/components/processing/ProcessingProducts';
+import TechnologyFeatures from '@/components/processing/TechnologyFeatures';
+import { processingContent } from '@/data/processing';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Advanced Processing | RMU Group',
@@ -50,7 +49,6 @@ export default function ProcessingPage() {
       />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }

@@ -1,16 +1,15 @@
-import { Metadata } from "next";
 import Header from "@/components/layout/Header";
+import { Metadata } from "next";
 // import About from "@/components/sections/About"; // Will move to /company page
 import Companies from "@/components/sections/Companies";
 // import Team from "@/components/sections/Team"; // Will move to /company page
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/common/WhatsappButton";
-import HeroSlider from '@/components/home/HeroSlider';
 import DataShowcase from '@/components/home/DataShowcase';
+import HeroSlider from '@/components/home/HeroSlider';
 import MissionStatement from '@/components/home/MissionStatement';
 import ProcessingFlow from '@/components/home/ProcessingFlow';
 import TechnologyFeatures from '@/components/home/TechnologyFeatures';
+import Footer from "@/components/layout/Footer";
+import Contact from "@/components/sections/Contact";
 import { homeContent } from '@/data/home';
 
 export const metadata: Metadata = {
@@ -60,7 +59,6 @@ export default function Home() {
       <Contact />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }
